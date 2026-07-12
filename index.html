@@ -1,0 +1,79 @@
+<!-- ============================================================
+     TrueRate PH — Landing page (index.html)
+     This is the first page visitors see.
+     The look/colors come from styles.css (linked in the <head>).
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrueRate PH — Compare US to Philippines money transfer rates</title>
+  <!-- Load the "Inter" font from Google Fonts (matches the design) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <!-- Connect our stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Site name + eyebrow -->
+    <p class="eyebrow" style="margin-bottom:6px;">TrueRate PH</p>
+    <p class="eyebrow" style="color:var(--text-muted); font-weight:500;">US &rarr; Philippines</p>
+
+    <!-- Live mid-market rate pill -->
+    <p style="margin-top:16px;">
+      <span class="badge">
+        <span class="dot"></span>Mid-market rate right now: 1 USD = &#8369;61.48
+      </span>
+    </p>
+
+    <!-- Headline -->
+    <h1 class="hero-headline">Don't let a bad exchange rate eat your family's money.</h1>
+
+    <!-- Supporting text -->
+    <p class="hero-subtext">
+      Every provider quotes a different rate and fee. We show you the one number that
+      actually matters &mdash; what your family gets in their pocket, in pesos.
+    </p>
+
+    <!-- "You send" input card -->
+    <div class="send-card">
+      <p class="field-label">You send</p>
+
+      <div class="amount-box">
+        <span class="currency">$</span>
+        <!-- A real input the visitor can type into -->
+        <input class="amount-input" id="sendAmount" type="number" value="500" min="1" inputmode="numeric">
+        <!-- Up/down buttons for changing the amount without typing -->
+        <div class="stepper">
+          <button type="button" class="step-btn" data-step="up" aria-label="Increase amount">&#9650;</button>
+          <button type="button" class="step-btn" data-step="down" aria-label="Decrease amount">&#9660;</button>
+        </div>
+      </div>
+
+      <p class="sending-to">sending to <strong>the Philippines</strong></p>
+
+      <!-- Button: JavaScript reads the amount above and passes it along.
+           The href is a safe fallback if JavaScript is turned off. -->
+      <a class="btn-primary" id="compareBtn" href="results.html">Compare today's rates &rarr;</a>
+    </div>
+
+    <!-- Trust line -->
+    <p class="trust-line">10 providers compared &nbsp;&middot;&nbsp; rates updated daily &nbsp;&middot;&nbsp; no sign-up needed</p>
+
+    <!-- Footer disclaimer -->
+    <p class="disclaimer one-line">
+      We may earn a commission if you sign up through a link below &mdash; it doesn't
+      change the rates we show you.
+    </p>
+
+  </div>
+
+  <!-- Our small JavaScript file (shared by both pages) -->
+  <script src="script.js"></script>
+</body>
+</html>

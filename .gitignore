@@ -1,0 +1,13 @@
+# Operating-system junk files we don't want to save
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Editor / tool folders
+.vscode/
+.idea/
+
+# Log files
+*.log

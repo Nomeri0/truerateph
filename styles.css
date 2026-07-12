@@ -1,0 +1,436 @@
+/* ============================================================
+   TrueRate PH — shared styles for the whole site
+   Both index.html (landing) and results.html use this one file.
+   Comments explain what each part does in plain language.
+   ============================================================ */
+
+/* --- Color palette ---------------------------------------------------------
+   These are named "variables" so we only pick each color once, here, and
+   reuse it everywhere below. Change a value here and it updates site-wide. */
+:root {
+  --bg:            #0e0f1a;   /* page background — near-black with a blue tint */
+  --card:          #171826;   /* slightly lighter panel/card background        */
+  --card-inset:    #10111c;   /* darker inset (the input box)                  */
+  --border:        #262838;   /* subtle border lines around cards              */
+  --text:          #e9eaf2;   /* main light text                               */
+  --text-muted:    #8b8ea3;   /* secondary gray text                           */
+  --text-faint:    #5c5f73;   /* faintest text (footer/disclaimer)             */
+  --accent:        #8b8cf0;   /* indigo/purple highlight (buttons, badge)      */
+  --accent-soft:   #2a2b52;   /* faint accent used for borders/backgrounds     */
+}
+
+/* --- Base page setup ------------------------------------------------------- */
+* {
+  box-sizing: border-box;   /* makes width/padding math predictable */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  /* "Inter" (loaded in the HTML) matches the design. If it can't load,
+     the browser falls back to the device's built-in font. */
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Centered single-column container.
+   max-width keeps the content narrow and readable, like the design. */
+.container {
+  max-width: 620px;
+  margin: 0 auto;          /* auto left/right margins = centered */
+  padding: 48px 24px 40px;
+}
+
+/* --- Small shared bits ----------------------------------------------------- */
+
+/* The little pill badge ("Mid-market rate right now…") */
+.badge {
+  display: inline-block;
+  border: 1px solid var(--accent-soft);
+  color: var(--text);
+  background: rgba(139, 140, 240, 0.06);
+  border-radius: 999px;          /* fully rounded ends = pill shape */
+  padding: 8px 16px;
+  font-size: 14px;
+}
+/* The small glowing dot before the badge text */
+.badge .dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Section label above the page name / eyebrow text */
+.eyebrow {
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ============================================================
+   LANDING PAGE (index.html)
+   ============================================================ */
+
+.hero-headline {
+  font-size: 44px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 22px 0 18px;
+}
+
+.hero-subtext {
+  color: var(--text-muted);
+  font-size: 18px;
+  max-width: 34em;
+}
+
+/* The dark rounded panel that holds the "You send" input */
+.send-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  margin: 32px 0 20px;
+}
+
+.field-label {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+/* The inset box showing "$  500" */
+.amount-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card-inset);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.amount-box .currency {
+  color: var(--text-muted);
+  font-size: 26px;
+  font-weight: 600;
+}
+.amount-box .amount {
+  color: var(--text);
+  font-size: 26px;
+  font-weight: 600;
+}
+/* The editable "You send" input, styled to blend into the box */
+.amount-input {
+  flex: 1;                 /* take up the remaining width */
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 600;
+  padding: 0;
+  min-width: 0;
+}
+/* Hide the tiny up/down number arrows for a cleaner look */
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.amount-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* The up/down stepper buttons at the end of an amount box */
+.stepper {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;      /* never let these shrink */
+  gap: 3px;
+}
+.step-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 30px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.step-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+.step-btn:active {
+  background: var(--card-inset);
+}
+
+/* A smaller version of the amount box, used in the results summary row */
+.amount-box.compact {
+  padding: 6px 8px;
+  border-radius: 10px;
+  gap: 8px;
+}
+.amount-box.compact .currency  { font-size: 18px; }
+.amount-box.compact .amount-input {
+  font-size: 18px;
+  width: 72px;         /* keep it compact instead of stretching */
+  flex: 0 0 auto;
+}
+.amount-box.compact .step-btn { width: 22px; height: 14px; font-size: 7px; }
+
+/* Group "Sending" + the amount box together on the left of the summary row */
+.summary-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sending-to {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 16px 0 20px;
+}
+.sending-to strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* The main call-to-action button.
+   It's an <a> link styled to look like a button. */
+.btn-primary {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 17px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.15s ease;   /* smooth hover */
+}
+.btn-primary:hover {
+  background: rgba(139, 140, 240, 0.10);
+}
+
+/* The "10 providers compared · rates updated daily · …" line */
+.trust-line {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+  text-align: center;      /* center this line */
+}
+
+/* Faint disclaimer at the very bottom */
+.disclaimer {
+  color: var(--text-faint);
+  font-size: 12.5px;
+  text-align: center;
+  margin-top: 40px;
+}
+/* Landing page only: keep its (shorter) disclaimer on a single line */
+.disclaimer.one-line {
+  white-space: nowrap;
+}
+
+/* ============================================================
+   RESULTS PAGE (results.html)
+   ============================================================ */
+
+/* "‹ TrueRate PH" back link at the top */
+.back-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 15px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.back-link:hover { color: var(--text); }
+
+/* The "Sending $ 500 to the Philippines" summary row */
+.summary-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+.summary-card .amount {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* The "Rates last verified…" banner */
+.verified-banner {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 14px 0 18px;
+}
+.verified-banner .dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.results-note {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Savings highlight: how much more the best option gives vs. the worst */
+.savings-callout {
+  background: rgba(139, 140, 240, 0.08);
+  border: 1px solid var(--accent-soft);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.savings-callout .savings-amount {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 20px;
+  margin-right: 4px;
+}
+.savings-callout strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Each provider card */
+.provider-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+/* The #1 (best) card gets a glowing accent border */
+.provider-card.top {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+/* Top row of a card: badge + name on the left, rank on the right */
+.provider-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+/* Little square with the provider's initials */
+.provider-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.provider-name {
+  font-size: 17px;
+  font-weight: 600;
+}
+.provider-rank {
+  margin-left: auto;         /* pushes the rank to the far right */
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* The big peso amount the family receives */
+.provider-amount {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+/* "1 USD = ₱57.85 · $3.50 fee" */
+.provider-rate {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+/* "Bank deposit · 1 day" */
+.provider-method {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+/* "Send with Wise →" button inside each card */
+.btn-send {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 12px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.btn-send:hover {
+  border-color: var(--accent);
+  background: rgba(139, 140, 240, 0.08);
+}
+
+/* ============================================================
+   RESPONSIVE — adjustments for narrow phone screens
+   Anything inside here only applies when the screen is <= 500px wide.
+   ============================================================ */
+@media (max-width: 500px) {
+  .container      { padding: 32px 18px; }
+  .hero-headline  { font-size: 34px; }
+  .hero-subtext   { font-size: 16px; }
+  .provider-amount { font-size: 32px; }
+  /* On small phones, let the one-line disclaimer wrap so it doesn't run off-screen */
+  .disclaimer.one-line { white-space: normal; }
+}

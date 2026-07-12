@@ -1,0 +1,209 @@
+<!-- ============================================================
+     TrueRate PH — Results page (results.html)
+     Shows providers ranked by how many pesos the family receives.
+     All rates/fees here are PLACEHOLDERS for layout only —
+     real data gets connected in a later step.
+
+     Each card carries two hidden values used by script.js:
+       data-rate = pesos per 1 USD for that provider
+       data-fee  = the provider's fee, in US dollars
+     script.js reads the amount from the web address (e.g.
+     results.html?amount=500) and recalculates every card.
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrueRate PH — Today's rates</title>
+  <!-- Load the "Inter" font from Google Fonts (matches the design) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Back to the landing page -->
+    <a class="back-link" href="index.html">&lsaquo; TrueRate PH</a>
+
+    <!-- Summary of what's being sent. The amount is editable here too, so
+         visitors can change it without going back to the first page. -->
+    <div class="summary-card">
+      <div class="summary-left">
+        <span>Sending</span>
+        <div class="amount-box compact">
+          <span class="currency">$</span>
+          <input class="amount-input" id="resultsAmount" type="number" value="500" min="1" inputmode="numeric">
+          <div class="stepper">
+            <button type="button" class="step-btn" data-step="up" aria-label="Increase amount">&#9650;</button>
+            <button type="button" class="step-btn" data-step="down" aria-label="Decrease amount">&#9660;</button>
+          </div>
+        </div>
+      </div>
+      <span>to the Philippines</span>
+    </div>
+
+    <!-- When rates were last checked -->
+    <div class="verified-banner">
+      <span class="dot"></span>Rates last verified: Jul 12, 2026 &middot; 9:41 AM
+    </div>
+
+    <!-- How the list is sorted -->
+    <p class="results-note">Sorted by highest amount your family receives</p>
+
+    <!-- Savings highlight: best vs. worst option (filled in by script.js) -->
+    <div class="savings-callout" id="savingsCallout">
+      <span class="savings-amount" id="savingsAmount">&#8369;1,673</span>
+      <span class="savings-text">more in your family's pocket by choosing
+        <strong id="savingsBest">Wise</strong> over the lowest option.</span>
+    </div>
+
+    <!-- ===================== PROVIDER CARDS ===================== -->
+    <div id="results-list">
+
+      <!-- #1 Wise (highlighted "top" card) -->
+      <div class="provider-card top" data-rate="57.85" data-fee="3.50">
+        <div class="provider-head">
+          <span class="provider-logo">WS</span>
+          <span class="provider-name">Wise</span>
+          <span class="provider-rank">#1</span>
+        </div>
+        <div class="provider-amount">&#8369;28,723</div>
+        <div class="provider-rate">1 USD = &#8369;57.85 &middot; $3.50 fee</div>
+        <div class="provider-method">Bank deposit &middot; 1 day</div>
+        <a class="btn-send" href="#">Send with Wise &rarr;</a>
+      </div>
+
+      <!-- #2 Remitly -->
+      <div class="provider-card" data-rate="57.40" data-fee="0">
+        <div class="provider-head">
+          <span class="provider-logo">RM</span>
+          <span class="provider-name">Remitly</span>
+          <span class="provider-rank">#2</span>
+        </div>
+        <div class="provider-amount">&#8369;28,700</div>
+        <div class="provider-rate">1 USD = &#8369;57.40 &middot; No fee</div>
+        <div class="provider-method">Bank deposit &middot; Minutes</div>
+        <a class="btn-send" href="#">Send with Remitly &rarr;</a>
+      </div>
+
+      <!-- #3 Instarem -->
+      <div class="provider-card" data-rate="57.12" data-fee="0">
+        <div class="provider-head">
+          <span class="provider-logo">IN</span>
+          <span class="provider-name">Instarem</span>
+          <span class="provider-rank">#3</span>
+        </div>
+        <div class="provider-amount">&#8369;28,560</div>
+        <div class="provider-rate">1 USD = &#8369;57.12 &middot; No fee</div>
+        <div class="provider-method">Bank deposit &middot; 1 day</div>
+        <a class="btn-send" href="#">Send with Instarem &rarr;</a>
+      </div>
+
+      <!-- #4 WorldRemit -->
+      <div class="provider-card" data-rate="56.76" data-fee="0">
+        <div class="provider-head">
+          <span class="provider-logo">WR</span>
+          <span class="provider-name">WorldRemit</span>
+          <span class="provider-rank">#4</span>
+        </div>
+        <div class="provider-amount">&#8369;28,380</div>
+        <div class="provider-rate">1 USD = &#8369;56.76 &middot; No fee</div>
+        <div class="provider-method">Cash pickup &middot; Minutes</div>
+        <a class="btn-send" href="#">Send with WorldRemit &rarr;</a>
+      </div>
+
+      <!-- #5 Maya -->
+      <div class="provider-card" data-rate="56.38" data-fee="0">
+        <div class="provider-head">
+          <span class="provider-logo">MY</span>
+          <span class="provider-name">Maya</span>
+          <span class="provider-rank">#5</span>
+        </div>
+        <div class="provider-amount">&#8369;28,190</div>
+        <div class="provider-rate">1 USD = &#8369;56.38 &middot; No fee</div>
+        <div class="provider-method">E-wallet &middot; Minutes</div>
+        <a class="btn-send" href="#">Send with Maya &rarr;</a>
+      </div>
+
+      <!-- #6 GCash -->
+      <div class="provider-card" data-rate="55.99" data-fee="0">
+        <div class="provider-head">
+          <span class="provider-logo">GC</span>
+          <span class="provider-name">GCash</span>
+          <span class="provider-rank">#6</span>
+        </div>
+        <div class="provider-amount">&#8369;27,995</div>
+        <div class="provider-rate">1 USD = &#8369;55.99 &middot; No fee</div>
+        <div class="provider-method">E-wallet &middot; Minutes</div>
+        <a class="btn-send" href="#">Send with GCash &rarr;</a>
+      </div>
+
+      <!-- #7 Xoom -->
+      <div class="provider-card" data-rate="56.08" data-fee="4.99">
+        <div class="provider-head">
+          <span class="provider-logo">XO</span>
+          <span class="provider-name">Xoom</span>
+          <span class="provider-rank">#7</span>
+        </div>
+        <div class="provider-amount">&#8369;27,760</div>
+        <div class="provider-rate">1 USD = &#8369;56.08 &middot; $4.99 fee</div>
+        <div class="provider-method">Bank deposit &middot; Minutes</div>
+        <a class="btn-send" href="#">Send with Xoom &rarr;</a>
+      </div>
+
+      <!-- #8 Cebuana Lhuillier -->
+      <div class="provider-card" data-rate="55.30" data-fee="1.50">
+        <div class="provider-head">
+          <span class="provider-logo">CL</span>
+          <span class="provider-name">Cebuana Lhuillier</span>
+          <span class="provider-rank">#8</span>
+        </div>
+        <div class="provider-amount">&#8369;27,564</div>
+        <div class="provider-rate">1 USD = &#8369;55.30 &middot; $1.50 fee</div>
+        <div class="provider-method">Cash pickup &middot; 1 day</div>
+        <a class="btn-send" href="#">Send with Cebuana Lhuillier &rarr;</a>
+      </div>
+
+      <!-- #9 Western Union -->
+      <div class="provider-card" data-rate="55.10" data-fee="5.00">
+        <div class="provider-head">
+          <span class="provider-logo">WU</span>
+          <span class="provider-name">Western Union</span>
+          <span class="provider-rank">#9</span>
+        </div>
+        <div class="provider-amount">&#8369;27,275</div>
+        <div class="provider-rate">1 USD = &#8369;55.10 &middot; $5.00 fee</div>
+        <div class="provider-method">Cash pickup &middot; Minutes</div>
+        <a class="btn-send" href="#">Send with Western Union &rarr;</a>
+      </div>
+
+      <!-- #10 Sendwave -->
+      <div class="provider-card" data-rate="54.10" data-fee="0">
+        <div class="provider-head">
+          <span class="provider-logo">SW</span>
+          <span class="provider-name">Sendwave</span>
+          <span class="provider-rank">#10</span>
+        </div>
+        <div class="provider-amount">&#8369;27,050</div>
+        <div class="provider-rate">1 USD = &#8369;54.10 &middot; No fee</div>
+        <div class="provider-method">E-wallet &middot; Minutes</div>
+        <a class="btn-send" href="#">Send with Sendwave &rarr;</a>
+      </div>
+
+    </div><!-- /#results-list -->
+
+    <!-- Footer disclaimer (same as landing page) -->
+    <p class="disclaimer">
+      We may earn a commission if you sign up through a link above &mdash; it doesn't
+      change the rates we show you. All figures shown are placeholder data.
+    </p>
+
+  </div>
+
+  <!-- Our small JavaScript file (shared by both pages) -->
+  <script src="script.js"></script>
+</body>
+</html>

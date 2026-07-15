@@ -75,6 +75,27 @@ function setupAmountControls(input, onChange) {
 
 
 /* ============================================================
+   LIVE MID-MARKET RATE (landing page badge)
+   Fetches the real USD->PHP rate on load and swaps it into the badge.
+   If the request fails (offline, etc.), the fallback already in the
+   HTML stays put, so the badge never looks broken.
+   ============================================================ */
+var midMarketEl = document.getElementById("midMarketRate");
+if (midMarketEl) {
+  fetch("https://open.er-api.com/v6/latest/USD")
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (data && data.result === "success" && data.rates && data.rates.PHP) {
+        midMarketEl.textContent = data.rates.PHP.toFixed(2);
+      }
+    })
+    .catch(function () {
+      /* Keep the fallback number that's already shown. */
+    });
+}
+
+
+/* ============================================================
    LANDING PAGE behaviour
    Runs only if the "Compare" button exists on this page.
    ============================================================ */

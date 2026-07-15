@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-15",
+    "referenceAmountUSD": 500,
+    "midMarketFallback": 61.70,
+    "ratePolicy": "standard-only",
+    "note": "Standard (non-promo) rates only. 'verified: true' means a real checked standard rate. 'verified: false' means the standard rate is not yet confirmed (only a first-transfer promo was visible, or none) and should be excluded from ranking until filled. Auto rates come from Wise's free comparison feed; NOTE: Xoom's auto rate looks promo-inflated (above mid-market) and needs review."
+  },
+  "providers": [
+    {
+      "name": "Wise",
+      "initials": "WS",
+      "method": "Bank deposit",
+      "speed": "Same day",
+      "rate": 61.6614,
+      "fee": 9.81,
+      "source": "auto",
+      "verified": true,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "Remitly",
+      "initials": "RM",
+      "method": "Bank deposit",
+      "speed": "Minutes",
+      "rate": 59.7631,
+      "fee": 0,
+      "source": "auto",
+      "verified": true,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "Xoom",
+      "initials": "XO",
+      "method": "Bank deposit",
+      "speed": "Minutes",
+      "rate": 63.1128,
+      "fee": 0,
+      "source": "auto",
+      "verified": false,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "MoneyGram",
+      "initials": "MG",
+      "method": "Bank deposit",
+      "speed": "1 day",
+      "rate": 61.1985,
+      "fee": 1.99,
+      "source": "auto",
+      "verified": true,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "Instarem",
+      "initials": "IN",
+      "method": "Bank deposit",
+      "speed": "1 day",
+      "rate": 61.0335,
+      "fee": 0,
+      "source": "auto",
+      "verified": true,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "Ria",
+      "initials": "RI",
+      "method": "Bank deposit",
+      "speed": "1 day",
+      "rate": 61.247,
+      "fee": 0,
+      "source": "manual",
+      "verified": true,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "Sendwave",
+      "initials": "SW",
+      "method": "Bank deposit",
+      "speed": "Minutes",
+      "rate": 61.001,
+      "fee": 0.49,
+      "source": "manual",
+      "verified": true,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "WorldRemit",
+      "initials": "WR",
+      "method": "Bank deposit",
+      "speed": "Same day",
+      "rate": null,
+      "fee": null,
+      "source": "manual",
+      "verified": false,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "Western Union",
+      "initials": "WU",
+      "method": "Cash pickup",
+      "speed": "Minutes",
+      "rate": null,
+      "fee": null,
+      "source": "manual",
+      "verified": false,
+      "lastUpdated": "2026-07-15"
+    },
+    {
+      "name": "Panda Remit",
+      "initials": "PR",
+      "method": "Bank deposit",
+      "speed": "1 day",
+      "rate": null,
+      "fee": null,
+      "source": "manual",
+      "verified": false,
+      "lastUpdated": "2026-07-15"
+    }
+  ]
+}

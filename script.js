@@ -167,10 +167,10 @@ if (resultsList) {
         document.getElementById("savingsAmount").textContent = formatPesos(savings);
         document.getElementById("savingsBest").textContent =
           items[0].card.querySelector(".provider-name").textContent;
-        callout.style.display = "";
+        callout.hidden = false;
       } else {
         // If every option is basically the same, hide the highlight.
-        callout.style.display = "none";
+        callout.hidden = true;
       }
     }
 
@@ -192,21 +192,88 @@ if (resultsList) {
     });
   }
 
-  // 1) Read the starting amount from the web address (default 500).
-  var params = new URLSearchParams(window.location.search);
-  var startAmount = clampAmount(parseFloat(params.get("amount")) || 500);
-
-  // 2) Show it in the editable box and calculate the list once.
-  var resultsInput = document.getElementById("resultsAmount");
-  if (resultsInput) {
-    resultsInput.value = startAmount;
+  // Build the HTML for one verified provider card. It includes the hidden
+  // data-rate / data-fee that renderResults() reads to do the math.
+  function buildCard(p) {
+    var feeText = (p.fee && p.fee > 0) ? ("$" + p.fee.toFixed(2) + " fee") : "No fee";
+    return "" +
+      '<div class="provider-card" data-rate="' + p.rate + '" data-fee="' + (p.fee || 0) + '">' +
+        '<div class="provider-head">' +
+          '<span class="provider-logo">' + p.initials + "</span>" +
+          '<span class="provider-name">' + p.name + "</span>" +
+          '<span class="provider-rank"></span>' +
+        "</div>" +
+        '<div class="provider-amount"></div>' +
+        '<div class="provider-rate">1 USD = ₱' + p.rate.toFixed(2) + " · " + feeText + "</div>" +
+        '<div class="provider-method">' + p.method + " · " + p.speed + "</div>" +
+        '<a class="btn-send" href="#">Send with ' + p.name + " →</a>" +
+      "</div>";
   }
-  renderResults(startAmount);
 
-  // 3) When the visitor changes the amount here, recalculate live and
-  //    keep the web address in sync (so a refresh remembers the amount).
-  setupAmountControls(resultsInput, function (newAmount) {
-    renderResults(newAmount);
-    history.replaceState(null, "", "results.html?amount=" + newAmount);
-  });
+  // Build a card for a provider whose standard rate isn't verified yet.
+  function buildPendingCard(p) {
+    return "" +
+      '<div class="provider-card unverified">' +
+        '<div class="provider-head">' +
+          '<span class="provider-logo">' + p.initials + "</span>" +
+          '<span class="provider-name">' + p.name + "</span>" +
+        "</div>" +
+        '<div class="provider-rate">Standard rate not yet verified</div>' +
+        '<div class="provider-method">' + p.method + " · " + p.speed + "</div>" +
+      "</div>";
+  }
+
+  // Turn "2026-07-15" into "Jul 15, 2026".
+  function formatDate(iso) {
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var d = new Date(iso + "T00:00:00");
+    return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+  }
+
+  // Load the data store, build the cards from it, then show the results.
+  fetch("providers.json")
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      // A provider is rank-able only if it's verified AND has a rate.
+      var verified = data.providers.filter(function (p) {
+        return p.verified && p.rate != null;
+      });
+      var pending = data.providers.filter(function (p) {
+        return !(p.verified && p.rate != null);
+      });
+
+      // Verified providers become the ranked cards.
+      resultsList.innerHTML = verified.map(buildCard).join("");
+
+      // Pending providers go in a separate, unranked section.
+      var pendingList = document.getElementById("unverified-list");
+      if (pending.length && pendingList) {
+        pendingList.innerHTML = pending.map(buildPendingCard).join("");
+        document.getElementById("unverified-section").hidden = false;
+      }
+
+      // Honest "rates last verified" date, straight from the store.
+      if (data.meta && data.meta.lastUpdated) {
+        var vd = document.getElementById("verifiedDate");
+        if (vd) { vd.textContent = formatDate(data.meta.lastUpdated); }
+      }
+
+      // Starting amount from the web address (default 500), then render.
+      var params = new URLSearchParams(window.location.search);
+      var startAmount = clampAmount(parseFloat(params.get("amount")) || 500);
+      var resultsInput = document.getElementById("resultsAmount");
+      if (resultsInput) { resultsInput.value = startAmount; }
+      renderResults(startAmount);
+
+      // Live recalculation when the amount changes here.
+      setupAmountControls(resultsInput, function (newAmount) {
+        renderResults(newAmount);
+        history.replaceState(null, "", "results.html?amount=" + newAmount);
+      });
+    })
+    .catch(function () {
+      resultsList.innerHTML =
+        '<p class="results-note">Sorry &mdash; could not load provider data.</p>';
+    });
 }

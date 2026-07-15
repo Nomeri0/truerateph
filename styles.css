@@ -351,6 +351,12 @@ body {
   box-shadow: 0 0 0 1px var(--accent);
 }
 
+/* Providers whose standard rate isn't confirmed yet — shown faded */
+.provider-card.unverified {
+  opacity: 0.6;
+  border-style: dashed;
+}
+
 /* Top row of a card: badge + name on the left, rank on the right */
 .provider-head {
   display: flex;

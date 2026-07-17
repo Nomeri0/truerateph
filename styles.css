@@ -316,6 +316,14 @@ body {
   margin-bottom: 16px;
 }
 
+/* Small clarifying note under the sort line (standard vs. promo rates) */
+.fine-note {
+  color: var(--text-faint);
+  font-size: 13px;
+  line-height: 1.45;
+  margin: -8px 0 18px;
+}
+
 /* Savings highlight: how much more the best option gives vs. the worst */
 .savings-callout {
   background: rgba(139, 140, 240, 0.08);

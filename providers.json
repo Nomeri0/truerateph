@@ -4,12 +4,13 @@
     "referenceAmountUSD": 500,
     "midMarketFallback": 61.7,
     "ratePolicy": "standard-only",
-    "note": "Ranking uses standard (non-promo) rates only. 'verified: true' = real checked standard rate, shown ranked. 'verified: false' + a rate = a first-transfer promo rate, shown unranked with a promo label. 'verified: false' + null rate = nothing confirmed yet, shown as pending. Auto rates come from Wise's free comparison feed; its updater auto-flags above-mid-market rates as promos."
+    "note": "Ranking uses standard (non-promo) rates only. 'verified: true' = real checked standard rate, shown ranked. 'verified: false' + a rate = a first-transfer promo rate, shown unranked with a promo label. 'verified: false' + null rate = nothing confirmed yet, shown as pending. 'url' is the provider link for the Send button (plain links for now; swap for affiliate links post-launch). Auto rates come from Wise's free comparison feed; its updater auto-flags above-mid-market rates as promos."
   },
   "providers": [
     {
       "name": "Wise",
       "initials": "WS",
+      "url": "https://wise.com/us/send-money/send-money-to-philippines",
       "method": "Bank deposit",
       "speed": "Same day",
       "rate": 61.6436,
@@ -21,6 +22,7 @@
     {
       "name": "Remitly",
       "initials": "RM",
+      "url": "https://www.remitly.com",
       "method": "Bank deposit",
       "speed": "Minutes",
       "rate": 59.775,
@@ -32,6 +34,7 @@
     {
       "name": "Xoom",
       "initials": "XO",
+      "url": "https://www.xoom.com",
       "method": "Bank deposit",
       "speed": "Minutes",
       "rate": 63.0134,
@@ -43,6 +46,7 @@
     {
       "name": "MoneyGram",
       "initials": "MG",
+      "url": "https://www.moneygram.com",
       "method": "Bank deposit",
       "speed": "1 day",
       "rate": 61.2106,
@@ -54,6 +58,7 @@
     {
       "name": "Instarem",
       "initials": "IN",
+      "url": "https://www.instarem.com",
       "method": "Bank deposit",
       "speed": "1 day",
       "rate": 61.0389,
@@ -65,6 +70,7 @@
     {
       "name": "Ria",
       "initials": "RI",
+      "url": "https://www.riamoneytransfer.com/en-us/send-money-to-philippines",
       "method": "Bank deposit",
       "speed": "1 day",
       "rate": 61.247,
@@ -76,6 +82,7 @@
     {
       "name": "Sendwave",
       "initials": "SW",
+      "url": "https://www.sendwave.com",
       "method": "Bank deposit",
       "speed": "Minutes",
       "rate": 61.001,
@@ -87,6 +94,7 @@
     {
       "name": "WorldRemit",
       "initials": "WR",
+      "url": "https://www.worldremit.com/en/philippines",
       "method": "Bank deposit",
       "speed": "Same day",
       "rate": 61.7832,
@@ -98,6 +106,7 @@
     {
       "name": "Western Union",
       "initials": "WU",
+      "url": "https://www.westernunion.com/us/en/send-money-to-philippines.html",
       "method": "Bank deposit",
       "speed": "Minutes",
       "rate": 63.0638,
@@ -109,6 +118,7 @@
     {
       "name": "Panda Remit",
       "initials": "PR",
+      "url": "https://www.pandaremit.com",
       "method": "Bank deposit",
       "speed": "1 day",
       "rate": null,

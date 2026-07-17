@@ -227,8 +227,16 @@ if (resultsList) {
         '<div class="provider-amount"></div>' +
         '<div class="provider-rate">1 USD = ₱' + p.rate.toFixed(2) + " · " + feeText + "</div>" +
         '<div class="provider-method">' + p.method + " · " + p.speed + "</div>" +
-        '<a class="btn-send" href="#">Send with ' + p.name + " →</a>" +
+        sendButton(p) +
       "</div>";
+  }
+
+  // The "Send with X" button. Opens the provider's site in a new tab so the
+  // visitor doesn't lose TrueRate PH. rel="noopener" is a safety best-practice.
+  function sendButton(p) {
+    var href = p.url || "#";
+    return '<a class="btn-send" href="' + href + '" target="_blank" ' +
+      'rel="noopener noreferrer">Send with ' + p.name + " →</a>";
   }
 
   // Build a card for a provider whose standard rate isn't verified yet.
@@ -248,7 +256,7 @@ if (resultsList) {
         '<div class="promo-rate">₱' + p.rate.toFixed(2) +
           ' <span class="promo-rate-unit">per $1</span></div>' +
         '<div class="provider-method">' + feeText + " · " + p.method + " · " + p.speed + "</div>" +
-        '<a class="btn-send" href="#">Send with ' + p.name + " →</a>";
+        sendButton(p);
     } else {
       body =
         '<div class="provider-rate">Standard rate not yet verified</div>' +

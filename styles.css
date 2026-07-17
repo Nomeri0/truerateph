@@ -352,10 +352,27 @@ body {
   box-shadow: 0 0 0 1px var(--accent);
 }
 
-/* Providers whose standard rate isn't confirmed yet — shown faded */
+/* Providers in the unranked tier — dashed border to set them apart */
 .provider-card.unverified {
-  opacity: 0.75;
   border-style: dashed;
+}
+/* Only the truly-empty pending cards (no rate yet) are dimmed */
+.provider-card.pending-empty {
+  opacity: 0.6;
+}
+/* Big gold promo rate so the one-time offer pops */
+.promo-rate {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.promo-rate .promo-rate-unit {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--text-muted);
 }
 /* Small pill label marking a one-time sign-up promo rate.
    Gold, so it stands out clearly from the purple accent used elsewhere. */

@@ -238,13 +238,16 @@ if (resultsList) {
   function buildPendingCard(p) {
     var badge = "";
     var body = "";
+    var extraClass = " pending-empty";
 
     if (p.rate != null) {
       var feeText = (p.fee && p.fee > 0) ? ("$" + p.fee.toFixed(2) + " fee") : "No fee";
       badge = '<span class="promo-badge">First-transfer promo</span>';
+      extraClass = " promo";
       body =
-        '<div class="provider-rate">1 USD = ₱' + p.rate.toFixed(2) + " · " + feeText + "</div>" +
-        '<div class="provider-method">' + p.method + " · " + p.speed + "</div>" +
+        '<div class="promo-rate">₱' + p.rate.toFixed(2) +
+          ' <span class="promo-rate-unit">per $1</span></div>' +
+        '<div class="provider-method">' + feeText + " · " + p.method + " · " + p.speed + "</div>" +
         '<a class="btn-send" href="#">Send with ' + p.name + " →</a>";
     } else {
       body =
@@ -253,7 +256,7 @@ if (resultsList) {
     }
 
     return "" +
-      '<div class="provider-card unverified">' +
+      '<div class="provider-card unverified' + extraClass + '">' +
         '<div class="provider-head">' +
           '<span class="provider-logo">' + p.initials + "</span>" +
           '<span class="provider-name">' + p.name + "</span>" +

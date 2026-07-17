@@ -360,12 +360,12 @@ body {
 .provider-card.pending-empty {
   opacity: 0.6;
 }
-/* Big gold promo rate so the one-time offer pops */
+/* Big promo rate so the one-time offer pops (white; gold badge marks it) */
 .promo-rate {
   font-size: 30px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--gold);
+  color: var(--text);
   margin-bottom: 6px;
 }
 .promo-rate .promo-rate-unit {

@@ -468,6 +468,10 @@ body {
   .hero-headline  { font-size: 34px; }
   .hero-subtext   { font-size: 16px; }
   .provider-amount { font-size: 32px; }
-  /* On small phones, let the one-line disclaimer wrap so it doesn't run off-screen */
+}
+
+/* Let the one-line disclaimer wrap once the screen is too narrow to fit it
+   on a single line, so it never runs off the edge. */
+@media (max-width: 680px) {
   .disclaimer.one-line { white-space: normal; }
 }

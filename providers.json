@@ -4,7 +4,7 @@
     "referenceAmountUSD": 500,
     "midMarketFallback": 61.7,
     "ratePolicy": "standard-only",
-    "note": "Standard (non-promo) rates only. 'verified: true' means a real checked standard rate. 'verified: false' means the standard rate is not yet confirmed (only a first-transfer promo was visible, or none) and should be excluded from ranking until filled. Auto rates come from Wise's free comparison feed; NOTE: Xoom's auto rate looks promo-inflated (above mid-market) and needs review."
+    "note": "Ranking uses standard (non-promo) rates only. 'verified: true' = real checked standard rate, shown ranked. 'verified: false' + a rate = a first-transfer promo rate, shown unranked with a promo label. 'verified: false' + null rate = nothing confirmed yet, shown as pending. Auto rates come from Wise's free comparison feed; its updater auto-flags above-mid-market rates as promos."
   },
   "providers": [
     {
@@ -89,8 +89,8 @@
       "initials": "WR",
       "method": "Bank deposit",
       "speed": "Same day",
-      "rate": null,
-      "fee": null,
+      "rate": 61.7832,
+      "fee": 0,
       "source": "manual",
       "verified": false,
       "lastUpdated": "2026-07-15"
@@ -98,10 +98,10 @@
     {
       "name": "Western Union",
       "initials": "WU",
-      "method": "Cash pickup",
+      "method": "Bank deposit",
       "speed": "Minutes",
-      "rate": null,
-      "fee": null,
+      "rate": 63.0638,
+      "fee": 0,
       "source": "manual",
       "verified": false,
       "lastUpdated": "2026-07-15"

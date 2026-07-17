@@ -232,15 +232,34 @@ if (resultsList) {
   }
 
   // Build a card for a provider whose standard rate isn't verified yet.
+  // If we DO have its promo rate, show it — clearly labeled as a
+  // first-transfer promo — so the card isn't empty. These cards are
+  // never ranked either way.
   function buildPendingCard(p) {
+    var badge = "";
+    var body = "";
+
+    if (p.rate != null) {
+      var feeText = (p.fee && p.fee > 0) ? ("$" + p.fee.toFixed(2) + " fee") : "No fee";
+      badge = '<span class="promo-badge">First-transfer promo</span>';
+      body =
+        '<div class="provider-rate">1 USD = ₱' + p.rate.toFixed(2) + " · " + feeText + "</div>" +
+        '<div class="provider-method">' + p.method + " · " + p.speed + "</div>" +
+        '<a class="btn-send" href="#">Send with ' + p.name + " →</a>";
+    } else {
+      body =
+        '<div class="provider-rate">Standard rate not yet verified</div>' +
+        '<div class="provider-method">' + p.method + " · " + p.speed + "</div>";
+    }
+
     return "" +
       '<div class="provider-card unverified">' +
         '<div class="provider-head">' +
           '<span class="provider-logo">' + p.initials + "</span>" +
           '<span class="provider-name">' + p.name + "</span>" +
+          badge +
         "</div>" +
-        '<div class="provider-rate">Standard rate not yet verified</div>' +
-        '<div class="provider-method">' + p.method + " · " + p.speed + "</div>" +
+        body +
       "</div>";
   }
 
@@ -253,7 +272,9 @@ if (resultsList) {
   }
 
   // Load the data store, build the cards from it, then show the results.
-  fetch("providers.json")
+  // "no-store" tells the browser to always fetch fresh data, never a
+  // cached copy — important for a site whose whole point is fresh rates.
+  fetch("providers.json", { cache: "no-store" })
     .then(function (res) { return res.json(); })
     .then(function (data) {
       // A provider is rank-able only if it's verified AND has a rate.

@@ -226,7 +226,7 @@ if (resultsList) {
         "</div>" +
         '<div class="provider-amount"></div>' +
         '<div class="provider-rate">1 USD = ₱' + p.rate.toFixed(2) + " · " + feeText + "</div>" +
-        '<div class="provider-method">' + p.method + " · " + p.speed + "</div>" +
+        '<div class="provider-method">' + p.method + "</div>" +
         sendButton(p) +
       "</div>";
   }
@@ -255,7 +255,7 @@ if (resultsList) {
       body =
         '<div class="promo-rate">₱' + p.rate.toFixed(2) +
           ' <span class="promo-rate-unit">per $1</span></div>' +
-        '<div class="provider-method">' + feeText + " · " + p.method + " · " + p.speed + "</div>" +
+        '<div class="provider-method">' + feeText + " · " + p.method + "</div>" +
         sendButton(p);
     } else {
       body =

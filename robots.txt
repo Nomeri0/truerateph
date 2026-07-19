@@ -1,0 +1,6 @@
+# Let search engines crawl the whole site
+User-agent: *
+Allow: /
+
+# TODO(hosting): once you have your real domain, add your sitemap URL here, e.g.:
+# Sitemap: https://your-domain.com/sitemap.xml

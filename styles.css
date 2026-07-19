@@ -337,6 +337,51 @@ body {
   margin: -8px 0 18px;
 }
 
+/* ============================================================
+   ABOUT PAGE (about.html)
+   ============================================================ */
+.about-lead {
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.55;
+  margin: 18px 0 8px;
+}
+.about-h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 34px 0 10px;
+}
+.about-body {
+  color: var(--text-muted);
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.about-body strong { color: var(--text); font-weight: 600; }
+.about-list {
+  color: var(--text-muted);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+.about-list li { margin-bottom: 8px; }
+.about-list strong { color: var(--text); font-weight: 600; }
+.about-cta { margin: 32px 0 8px; }
+
+/* Small footer link (e.g. to the About page) shared across pages */
+.footer-links {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 14px;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.footer-links a:hover { color: var(--text); }
+
 /* Savings highlight: how much more the best option gives vs. the worst */
 .savings-callout {
   background: rgba(139, 140, 240, 0.08);

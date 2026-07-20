@@ -260,7 +260,7 @@ if (resultsList) {
     } else {
       body =
         '<div class="provider-rate">Standard rate not yet verified</div>' +
-        '<div class="provider-method">' + p.method + " · " + p.speed + "</div>";
+        '<div class="provider-method">' + p.method + "</div>";
     }
 
     return "" +

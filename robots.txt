@@ -2,5 +2,4 @@
 User-agent: *
 Allow: /
 
-# TODO(hosting): once you have your real domain, add your sitemap URL here, e.g.:
-# Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://truerateph.com/sitemap.xml

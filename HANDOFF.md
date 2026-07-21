@@ -3,13 +3,14 @@
 _A plain-language summary to resume the project in a fresh chat. Written for a non-developer._
 
 **Project folder:** `C:\Users\Nomerio\Desktop\ClaudeProjects\TrueRatePH\`
+**Live at:** https://truerateph.com
 **What it is:** A website that helps people sending money from the US to the Philippines see which provider gives their family the most pesos. It's an information/comparison site — it never touches money.
-**How to view it locally:** Ask the new chat to "start the TrueRate PH site" (it runs a small local server at http://localhost:5500). It shuts down between sessions — that's normal.
 
 ---
 
 ## 1. Current state — what's built and working ✅
 
+- [x] **Live and hosted.** Real domain `truerateph.com`, HTTPS on, hosted free via GitHub Pages from the repo at `https://github.com/Nomeri0/truerateph`.
 - [x] **Three pages**: `index.html` (landing), `results.html` (the comparison list), `about.html` ("Why we built this").
 - [x] **Live mid-market rate** on the landing page — pulls the real USD→PHP rate on each visit (free source, no key), with a fallback number if offline.
 - [x] **"You send" amount box** with up/down arrow buttons (each click = $15) and typing. The amount carries into the results page.
@@ -20,26 +21,29 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
   - **"Your family gets ₱X more"** savings callout (best vs. worst).
   - **"Send with…" buttons** open each provider's real website in a new tab.
 - [x] **Honesty features**: "rates last verified" date, standard-vs-promo note, a disclaimer (rates are estimates; we're not a money transfer provider), and a commission disclosure.
-- [x] **SEO**: search titles + descriptions, Facebook/Messenger share tags, a favicon (₱ icon), `robots.txt`, `sitemap.xml`, and structured data.
-- [x] **Auto-updater built** (see section 4).
-- [x] **Everything saved in Git** (version control) — ~15 saved snapshots, all committed, nothing unsaved.
+- [x] **SEO**: search titles + descriptions, Facebook/Messenger share tags, a favicon (₱ icon), `robots.txt`, `sitemap.xml`, canonical URLs — all pointing at the real `truerateph.com` domain now.
+- [x] **Two auto-refresh systems** (see section 4):
+  - Daily script for the 5 providers with a free data feed.
+  - Weekly scheduled Claude task for the 5 providers without one (browses each site by hand, updates data, pushes live, and sends a push notification only when a rate actually changes).
+- [x] **Everything saved in Git** (version control), pushed to GitHub, nothing unsaved.
 
-**Nothing is currently broken.**
+**Nothing is currently broken.** (A display bug where a pending provider card showed the word "undefined" was found and fixed after launch.)
 
 ---
 
-## 2. What's left to do before launch 🚀
+## 2. What's left / ideas for later 🚀
 
-- [ ] **Host the site online** (recommended: GitHub Pages — free). This is the main remaining step. See section 4.
-- [ ] **Replace the placeholder web address**: the code currently uses `truerate-ph.example.com` as a stand-in. After hosting, swap it for your real address in these spots (all marked with `TODO(hosting)` comments): the `canonical` and `og:url` lines in `index.html`, `results.html`, and `about.html`; plus `sitemap.xml` and `robots.txt`.
-- [ ] **Turn on the auto-updater** — it activates automatically once the project is on GitHub (nothing to install).
-- [ ] _(Optional)_ **Create a share image** (`og:image`) — a 1200×630 picture that shows when the link is shared on Facebook. Without it, shares still work (just no picture).
-- [ ] _(Optional)_ **Add your personal story** to `about.html` — there's a clearly marked spot (`▼▼▼ ADD YOUR PERSONAL STORY HERE ▼▼▼`).
+Nothing here is blocking — the site works fully as-is.
 
-**After launch (not blockers):**
-- [ ] Apply to each provider's **affiliate program** (they usually need a live site to approve you).
-- [ ] Swap the plain provider links for **affiliate links** — a one-line edit per provider in `providers.json` (the `url` field).
-- [ ] Talk to a **lawyer** about the cross-border/affiliate setup before earning; handle **business registration + tax** on commission income.
+- [ ] Get a real **standard rate** for Xoom, WorldRemit, and Western Union (currently only their promo rates are known/shown).
+- [ ] Find any usable rate for **Panda Remit** (currently nothing found).
+- [ ] Apply to each provider's **affiliate program**, then swap the plain provider links for **affiliate links** (one-line edit per provider in `providers.json`'s `url` field).
+- [ ] Talk to a **lawyer/accountant** once affiliate income starts, re: business registration and tax on commission income.
+- [ ] _(Optional)_ **Create a share image** (`og:image`) — a 1200×630 picture that shows when the link is shared on social media.
+- [ ] _(Optional)_ **Add a personal story** to `about.html` — there's a clearly marked, currently-empty spot for it.
+- [ ] _(Optional)_ Add privacy-friendly visitor analytics, submit the sitemap to Google Search Console, add more providers over time.
+
+A slightly more detailed version of this list, plus the story of how the site was built, lives in the [project journal](C:\Users\Nomerio\Desktop\ClaudeProjects\Journal\TrueRatePH.md).
 
 ---
 
@@ -49,28 +53,20 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
   - **Mid-market exchange rate:** `open.er-api.com` (free, no sign-up).
   - **Provider rates (5 of them):** the **Wise comparison API** (free, no key) — `https://api.wise.com/v4/comparisons/?sourceCurrency=USD&targetCurrency=PHP&sendAmount=500`.
 - **No environment variables, no secret values, no backend/server** to configure.
-- **Git identity** (local placeholder, safe to change): name `Nomerio Maralit`, email `nomerio@truerate.local`. We'll set up a real GitHub "no-reply" email during hosting so your personal email stays private.
+- **GitHub account:** username `Nomeri0`. **Git identity** used for commits: name `Nomeri0`, email is a GitHub-provided "no-reply" address (keeps the real email private) — already set locally, nothing to redo.
 - **Reference amount** used for the standard comparison: **$500 USD**.
-- **Local preview:** a Python web server on **port 5500** (config named `truerate` in `.claude/launch.json`).
+- **No local preview server is set up** (there's no `.claude/launch.json` in this folder). Since the site is already live at truerateph.com, that's the easiest way to check it — a local preview isn't necessary unless you specifically want to test unpushed changes before they go live.
 
 ---
 
-## 4. Deployment / launch process (was about to start) 🛠️
+## 4. How rates stay up to date 🔄
 
-We had **not started** hosting yet. The planned steps (GitHub Pages, free):
+**Daily (automatic, no oversight needed):**
+- `update_rates.py` = the "engine." Refreshes Wise, Remitly, MoneyGram, Instarem, and Xoom from the free Wise feed + live mid-market rate.
+- `.github/workflows/update-rates.yml` = the "timer." Runs the engine automatically every day on GitHub's servers and pushes any changes.
 
-- [ ] Create a **GitHub account** (if you don't have one).
-- [ ] Set up your **git identity + GitHub no-reply email** (keeps your real email private).
-- [ ] Create a **GitHub repository** and upload the `TrueRatePH` folder to it.
-- [ ] Turn on **GitHub Pages** (serve the site from the main branch).
-- [ ] Get your **live web address**.
-- [ ] Do the **placeholder swap** from section 2 (replace `example.com` with your real address).
-- [ ] Confirm the **auto-updater** turned on (check the repo's "Actions" tab).
-- [ ] **Test the live site** end to end.
-
-**The auto-updater, explained:**
-- `update_rates.py` = the "engine." It refreshes the 5 auto providers from the free Wise feed and the live mid-market rate, and leaves the manual providers alone. You can run it by hand any time with `python update_rates.py`.
-- `.github/workflows/update-rates.yml` = the "timer." Once the site is on GitHub, this runs the engine automatically (daily) so rates stay fresh with no effort. It's dormant until then.
+**Weekly (automatic, notifies on real changes):**
+- A Claude scheduled task (`truerateph-weekly-manual-rate-check`, runs Fridays 3pm) checks the 5 providers with no public data feed — Ria, Sendwave, WorldRemit, Western Union, Panda Remit — by visiting each site directly, and updates/pushes `providers.json` if a rate changed. A push notification is sent only on runs where something actually changed. Manage/reschedule it from the Scheduled section of the app sidebar.
 
 ---
 
@@ -78,12 +74,12 @@ We had **not started** hosting yet. The planned steps (GitHub Pages, free):
 
 - **Standard rates only (big one):** We rank by each provider's **normal everyday rate**, NOT their flashy one-time "first-transfer promo." Promos mislead repeat senders (most of the audience) and are shown separately, clearly labeled. This is the site's core trust principle.
 - **The `verified` flag in `providers.json`** controls where a provider shows up: `true` = ranked (real standard rate); `false` + a rate = promo shown in the unranked section (gold badge); `false` + empty rate = "pending / not yet verified."
-- **Automatic promo guardrail:** The updater flags any auto rate that comes back *above* the mid-market rate as a promo (you can't legitimately beat the true rate), so it drops to the unranked tier by itself. That's why **Xoom** is unranked.
-- **Delivery speeds were removed on purpose:** the old "Minutes / 1 day" labels were guesses, not real data, and they clashed with the fees (e.g., Remitly's "No fee" is the slow economy option, not the instant one). Cards now show only **"Bank deposit"** (the honest comparison basis). Fees shown are for bank deposit; faster options cost more (there's a note saying so).
-- **Only 5 providers have a free data source** (via the Wise feed). The other 5 have no public API and are updated by hand. Getting their *standard* rate is hard because their sites hide it behind promos/logins — the long-term fix is affiliate data feeds, not scraping.
+- **Automatic promo guardrail:** The daily updater flags any auto rate that comes back *above* the mid-market rate as a promo (you can't legitimately beat the true rate), so it drops to the unranked tier by itself. That's why **Xoom** is unranked.
+- **Delivery speeds were removed on purpose:** the old "Minutes / 1 day" labels were guesses, not real data, and they clashed with the fees. Cards now show only **"Bank deposit"** (the honest comparison basis). Fees shown are for bank deposit; faster options cost more (there's a note saying so).
+- **Only 5 providers have a free data source** (via the Wise feed). The other 5 are checked weekly by hand (see section 4). Getting their *standard* rate is hard because their sites hide it behind promos/logins — the long-term fix is affiliate data feeds, not scraping.
 - **Do NOT add money-handling or automated logins.** Staying a pure info/referral site keeps you out of heavy financial regulation. Automated login-scraping is fragile, often against terms, and Claude won't handle your passwords.
-- **Cache-busting version numbers:** links like `styles.css?v=8` and `script.js?v=5` have a number that we bump whenever the file changes, so browsers load the new version instead of an old cached one. `providers.json` is fetched with "never cache" so rates are always fresh.
-- **Known tool quirk (not a site bug):** the browser preview's *screenshot* tool often times out in this environment. Everything was verified by inspecting the page directly instead. The site itself is fine.
+- **Cache-busting version numbers:** links like `styles.css?v=8` and `script.js?v=6` have a number that gets bumped whenever that file changes, so browsers load the new version instead of an old cached one. `providers.json` is fetched with "never cache" so rates are always fresh.
+- **DNS/HTTPS notes:** the domain was bought through Namecheap; 4 A records point the bare domain at GitHub Pages' IPs, and a CNAME points `www` at the GitHub Pages address. GitHub auto-issues the HTTPS certificate once DNS checks out (took under an hour here) — nothing to renew manually.
 - **Windows line-ending warnings** (LF/CRLF) appear on every git commit — harmless, ignore them.
 
 ---
@@ -92,17 +88,15 @@ We had **not started** hosting yet. The planned steps (GitHub Pages, free):
 
 - **Nothing is broken.**
 - **Pending by design (not bugs):**
-  - **Panda Remit** — no rate found anywhere; shows as "not yet verified."
-  - **Xoom, WorldRemit, Western Union** — only promo rates available; shown unranked. No verified standard rate yet.
+  - **Panda Remit** — no rate found anywhere; shows as "not yet verified." (Covered by the weekly check going forward.)
+  - **Xoom, WorldRemit, Western Union** — only promo rates available; shown unranked. No verified standard rate yet. (WorldRemit/Western Union covered by the weekly check; Xoom is on the daily auto-updater and will unlock itself automatically if its real rate ever drops below mid-market.)
   - **Share image (`og:image`)** — not created yet (optional).
-  - **Real web address** — still the `example.com` placeholder (waiting for hosting).
   - **About page personal story** — spot is empty (optional).
-  - **Affiliate links** — currently plain provider links; swap after joining programs.
-  - **Auto-updater timer** — dormant until hosted.
+  - **Affiliate links** — currently plain provider links; swap after joining affiliate programs.
 
 ---
 
 ## How to resume in a new chat
 1. Open a new chat in this same project folder (`TrueRatePH`). Your saved memory loads automatically.
-2. Say: **"Read HANDOFF.md and let's continue — I want to host the site."**
-3. The new chat can start the local preview and pick up from section 4.
+2. Say: **"Read HANDOFF.md and let's continue working on TrueRate PH."**
+3. Check the [project journal](C:\Users\Nomerio\Desktop\ClaudeProjects\Journal\TrueRatePH.md) too if you want the fuller story of how it was built, or just tell the new chat what you want to work on next (e.g. "let's find WorldRemit's real rate" or "let's set up affiliate links").

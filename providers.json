@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-22",
+    "lastUpdated": "2026-07-23",
     "referenceAmountUSD": 500,
-    "midMarketFallback": 61.78,
+    "midMarketFallback": 61.83,
     "ratePolicy": "standard-only",
     "note": "Ranking uses standard (non-promo) rates only, compared on a bank-transfer -> bank-deposit basis (the free Wise feed's basis). 'verified: true' = real checked standard rate, shown ranked. 'verified: false' + a rate = a first-transfer promo rate, shown unranked with a promo label. 'verified: false' + null rate = nothing confirmed yet, shown as pending. 'url' is the provider link for the Send button (plain links for now; swap for affiliate links post-launch). Delivery speeds are intentionally not stored/shown until verified per provider (faster options generally cost more)."
   },
@@ -12,11 +12,11 @@
       "initials": "WS",
       "url": "https://wise.com/us/send-money/send-money-to-philippines",
       "method": "Bank deposit",
-      "rate": 61.7497,
+      "rate": 61.7524,
       "fee": 9.81,
       "source": "auto",
       "verified": true,
-      "lastUpdated": "2026-07-22"
+      "lastUpdated": "2026-07-23"
     },
     {
       "name": "Remitly",
@@ -34,11 +34,11 @@
       "initials": "XO",
       "url": "https://www.xoom.com",
       "method": "Bank deposit",
-      "rate": 63.1093,
+      "rate": 63.1008,
       "fee": 0.0,
       "source": "auto",
       "verified": false,
-      "lastUpdated": "2026-07-22"
+      "lastUpdated": "2026-07-23"
     },
     {
       "name": "MoneyGram",
@@ -56,11 +56,11 @@
       "initials": "IN",
       "url": "https://www.instarem.com",
       "method": "Bank deposit",
-      "rate": 61.1403,
+      "rate": 61.1515,
       "fee": 0.0,
       "source": "auto",
       "verified": true,
-      "lastUpdated": "2026-07-22"
+      "lastUpdated": "2026-07-23"
     },
     {
       "name": "Ria",

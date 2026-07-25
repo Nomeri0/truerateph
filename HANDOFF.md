@@ -16,7 +16,7 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 - [x] **"You send" amount box** with up/down arrow buttons (each click = $15) and typing. The amount carries into the results page.
 - [x] **Results page** builds itself from a single data file (`providers.json`):
   - **6 ranked providers** (real standard rates): Ria, Instarem, MoneyGram, Sendwave, Wise, Remitly. Ranked by how many pesos the family receives. #1 is highlighted.
-  - **4 unranked providers** shown separately: Xoom, WorldRemit, Western Union show their **first-transfer promo** rate (gold badge, big white number); Panda Remit shows "not yet verified" (no rate found).
+  - **4 unranked providers** shown separately: Xoom, WorldRemit, Western Union, and Panda Remit all show a **promo rate** (gold badge, big white number) — none has a confirmed standard rate yet.
   - Recalculates and re-sorts **live with a slide animation** as the amount changes.
   - **"Your family gets ₱X more"** savings callout (best vs. worst).
   - **"Send with…" buttons** open each provider's real website in a new tab.
@@ -35,8 +35,7 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 
 Nothing here is blocking — the site works fully as-is.
 
-- [ ] Get a real **standard rate** for Xoom, WorldRemit, and Western Union (currently only their promo rates are known/shown).
-- [ ] Find any usable rate for **Panda Remit** (currently nothing found).
+- [ ] Get a real **standard rate** for Xoom, WorldRemit, Western Union, and Panda Remit (currently only their promo rates are known/shown; Panda Remit's promo rate + standard fee were found 2026-07-25, but its standard rate is still hidden behind a "new user" toggle).
 - [ ] Apply to each provider's **affiliate program**, then swap the plain provider links for **affiliate links** (one-line edit per provider in `providers.json`'s `url` field).
 - [ ] Talk to a **lawyer/accountant** once affiliate income starts, re: business registration and tax on commission income.
 - [ ] _(Optional)_ **Create a share image** (`og:image`) — a 1200×630 picture that shows when the link is shared on social media.
@@ -88,8 +87,7 @@ A slightly more detailed version of this list, plus the story of how the site wa
 
 - **Nothing is broken.**
 - **Pending by design (not bugs):**
-  - **Panda Remit** — no rate found anywhere; shows as "not yet verified." (Covered by the weekly check going forward.)
-  - **Xoom, WorldRemit, Western Union** — only promo rates available; shown unranked. No verified standard rate yet. (WorldRemit/Western Union covered by the weekly check; Xoom is on the daily auto-updater and will unlock itself automatically if its real rate ever drops below mid-market.)
+  - **Xoom, WorldRemit, Western Union, Panda Remit** — only promo rates available; shown unranked. No verified standard rate yet. (WorldRemit/Western Union/Panda Remit covered by the weekly check; Xoom is on the daily auto-updater and will unlock itself automatically if its real rate ever drops below mid-market.) Panda Remit's promo rate came in above mid-market on 2026-07-25 (same signature as Xoom), which is why it stayed unranked even though a number was finally found.
   - **Share image (`og:image`)** — not created yet (optional).
   - **About page personal story** — spot is empty (optional).
   - **Affiliate links** — currently plain provider links; swap after joining affiliate programs.

@@ -35,12 +35,20 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 
 Nothing here is blocking — the site works fully as-is.
 
-- [ ] Get a real **standard rate** for Xoom, WorldRemit, Western Union, and Panda Remit (currently only their promo rates are known/shown; Panda Remit's promo rate + standard fee were found 2026-07-25, but its standard rate is still hidden behind a "new user" toggle).
+**Scope decision (2026-07-28): this project is a portfolio exhibit, not a business.** The goal is a polished, live product to point to when showing off what's been built with AI, plus maybe a little passive affiliate income — not competing with the big remittance-comparison apps. This reshuffled the backlog below: things that only matter if you're trying to be a complete/authoritative comparison tool got dropped; things that make it look and feel like a real, finished product got promoted.
+
+**Active backlog — parked until there's time, pull this list out whenever asked "what's next":**
+- [ ] **Brand identity** — colors, fonts, logo. A design framework for this was already worked out with Claude Design (as of 2026-07-28); next session is implementing it on the actual site.
 - [ ] Apply to each provider's **affiliate program**, then swap the plain provider links for **affiliate links** (one-line edit per provider in `providers.json`'s `url` field).
-- [ ] Talk to a **lawyer/accountant** once affiliate income starts, re: business registration and tax on commission income.
-- [ ] _(Optional)_ **Create a share image** (`og:image`) — a 1200×630 picture that shows when the link is shared on social media.
-- [ ] _(Optional)_ **Add a personal story** to `about.html` — there's a clearly marked, currently-empty spot for it.
-- [ ] _(Optional)_ Add privacy-friendly visitor analytics, submit the sitemap to Google Search Console, add more providers over time.
+- [ ] **Add a personal story** to `about.html` — there's a clearly marked, currently-empty spot for it. Matters more now since the site doubles as a portfolio piece with a story behind it.
+- [ ] **Submit the sitemap to Google Search Console** — quick, free, helps Google index the site faster and gives basic search-traffic data. Requires the user to create the (free) Search Console account first — Claude can't create accounts on someone's behalf.
+- [ ] **Add privacy-friendly visitor analytics** (e.g. GoatCounter — free, no cookie-consent banner needed) — gives a real visitor number to point to when showing this off. Also requires the user to sign up first, then hand Claude the tracking snippet to wire in.
+
+**Deliberately dropped, given the scope decision above — do not resurface these unless the scope changes again:**
+- Finding real standard rates for Xoom, WorldRemit, Western Union, Panda Remit (only matters for being a complete/authoritative comparison tool, not an exhibit).
+- Any deeper SEO investment beyond what's already done (content strategy, backlinks, keyword targeting) — growth-business work, not exhibit polish.
+- Talking to a lawyer/accountant re: business registration — revisit only if/when real affiliate income actually starts flowing.
+- Share image (`og:image`), adding more providers over time — nice-to-haves, low priority, only if it comes up naturally.
 
 A slightly more detailed version of this list, plus the story of how the site was built, lives in the [project journal](C:\Users\Nomerio\Desktop\ClaudeProjects\Journal\TrueRatePH.md).
 

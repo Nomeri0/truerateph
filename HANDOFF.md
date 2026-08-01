@@ -15,8 +15,8 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 - [x] **Live mid-market rate** on the landing page — pulls the real USD→PHP rate on each visit (free source, no key), with a fallback number if offline.
 - [x] **"You send" amount box** with up/down arrow buttons (each click = $15) and typing. The amount carries into the results page.
 - [x] **Results page** builds itself from a single data file (`providers.json`):
-  - **6 ranked providers** (real standard rates): Ria, Instarem, MoneyGram, Sendwave, Wise, Remitly. Ranked by how many pesos the family receives. #1 is highlighted.
-  - **4 unranked providers** shown separately: Xoom, WorldRemit, Western Union, and Panda Remit all show a **promo rate** (gold badge, big white number) — none has a confirmed standard rate yet.
+  - **7 ranked providers** (real standard rates): Ria, Instarem, MoneyGram, Sendwave, Wise, Remitly, Panda Remit. Ranked by how many pesos the family receives. #1 is highlighted.
+  - **3 unranked providers** shown separately: Xoom, WorldRemit, and Western Union all show a **promo rate** (gold badge, big white number) — none has a confirmed standard rate yet.
   - Recalculates and re-sorts **live with a slide animation** as the amount changes.
   - **"Your family gets ₱X more"** savings callout (best vs. worst).
   - **"Send with…" buttons** open each provider's real website in a new tab.
@@ -45,7 +45,7 @@ Nothing here is blocking — the site works fully as-is.
 - [ ] **Add privacy-friendly visitor analytics** (e.g. GoatCounter — free, no cookie-consent banner needed) — gives a real visitor number to point to when showing this off. Also requires the user to sign up first, then hand Claude the tracking snippet to wire in.
 
 **Deliberately dropped, given the scope decision above — do not resurface these unless the scope changes again:**
-- Finding real standard rates for Xoom, WorldRemit, Western Union, Panda Remit (only matters for being a complete/authoritative comparison tool, not an exhibit).
+- Finding real standard rates for Xoom, WorldRemit, Western Union (only matters for being a complete/authoritative comparison tool, not an exhibit). Panda Remit's was found and verified via the routine weekly check on 2026-08-01.
 - Any deeper SEO investment beyond what's already done (content strategy, backlinks, keyword targeting) — growth-business work, not exhibit polish.
 - Talking to a lawyer/accountant re: business registration — revisit only if/when real affiliate income actually starts flowing.
 - Share image (`og:image`), adding more providers over time — nice-to-haves, low priority, only if it comes up naturally.
@@ -95,7 +95,7 @@ A slightly more detailed version of this list, plus the story of how the site wa
 
 - **Nothing is broken.**
 - **Pending by design (not bugs):**
-  - **Xoom, WorldRemit, Western Union, Panda Remit** — only promo rates available; shown unranked. No verified standard rate yet. (WorldRemit/Western Union/Panda Remit covered by the weekly check; Xoom is on the daily auto-updater and will unlock itself automatically if its real rate ever drops below mid-market.) Panda Remit's promo rate came in above mid-market on 2026-07-25 (same signature as Xoom), which is why it stayed unranked even though a number was finally found.
+  - **Xoom, WorldRemit, Western Union** — only promo rates available; shown unranked. No verified standard rate yet. (WorldRemit/Western Union covered by the weekly check; Xoom is on the daily auto-updater and will unlock itself automatically if its real rate ever drops below mid-market.) Panda Remit graduated to ranked on 2026-08-01 once its weekly check found a clear standard-vs-promo split (struck-through $2.99 fee = standard, $0 = promo) — same rate calculator page, just read more carefully.
   - **Share image (`og:image`)** — not created yet (optional).
   - **About page personal story** — spot is empty (optional).
   - **Affiliate links** — currently plain provider links; swap after joining affiliate programs.

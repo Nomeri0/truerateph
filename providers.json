@@ -67,55 +67,55 @@
       "initials": "RI",
       "url": "https://www.riamoneytransfer.com/en-us/send-money-to-philippines",
       "method": "Bank deposit",
-      "rate": 61.3831,
+      "rate": 61.0983,
       "fee": 0,
       "source": "manual",
       "verified": true,
-      "lastUpdated": "2026-07-25"
+      "lastUpdated": "2026-08-01"
     },
     {
       "name": "Sendwave",
       "initials": "SW",
       "url": "https://www.sendwave.com",
       "method": "Bank deposit",
-      "rate": 60.904,
+      "rate": 60.495,
       "fee": 0.49,
       "source": "manual",
       "verified": true,
-      "lastUpdated": "2026-07-25"
+      "lastUpdated": "2026-08-01"
     },
     {
       "name": "WorldRemit",
       "initials": "WR",
       "url": "https://www.worldremit.com/en/philippines",
       "method": "Bank deposit",
-      "rate": 61.9036,
+      "rate": 61.4321,
       "fee": 0,
       "source": "manual",
       "verified": false,
-      "lastUpdated": "2026-07-25"
+      "lastUpdated": "2026-08-01"
     },
     {
       "name": "Western Union",
       "initials": "WU",
       "url": "https://www.westernunion.com/us/en/send-money-to-philippines.html",
       "method": "Bank deposit",
-      "rate": 63.2684,
+      "rate": 62.6715,
       "fee": 0,
       "source": "manual",
       "verified": false,
-      "lastUpdated": "2026-07-25"
+      "lastUpdated": "2026-08-01"
     },
     {
       "name": "Panda Remit",
       "initials": "PR",
       "url": "https://www.pandaremit.com",
       "method": "Bank deposit",
-      "rate": 63.076,
+      "rate": 62.4748,
       "fee": 2.99,
       "source": "manual",
-      "verified": false,
-      "lastUpdated": "2026-07-25"
+      "verified": true,
+      "lastUpdated": "2026-08-01"
     }
   ]
 }

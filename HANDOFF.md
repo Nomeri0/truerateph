@@ -40,7 +40,7 @@ Nothing here is blocking — the site works fully as-is.
 **Active backlog — parked until there's time, pull this list out whenever asked "what's next":**
 - [x] **Brand identity — colors.** Applied 2026-08-02, from `content/TrueRatePH Brand Strategy.pdf` (local-only, gitignored — see section 3 for the hex values now baked into `styles.css`). Fonts and logo are still open — the strategy doc only specifies "a clean, confident geometric sans" (no named font) and a wordmark treatment, not an actual logo mark. Pull this back out when ready to pick a font and/or commission a logo.
 - [ ] **Add a personal story** to `about.html` — there's a clearly marked, currently-empty spot for it. Matters more now since the site doubles as a portfolio piece with a story behind it.
-- [ ] **Submit the sitemap to Google Search Console** — in progress as of 2026-08-02: the Google ownership-verification meta tag is added to `index.html` and pushed live. Next: user clicks "Verify" in Search Console, then submits `https://truerateph.com/sitemap.xml` under the Sitemaps section.
+- [x] **Submit the sitemap to Google Search Console.** Done 2026-08-02 — site verified (verification meta tag lives in `index.html`) and `sitemap.xml` submitted. Search/traffic data will start showing up in Search Console over the following days/weeks.
 - [ ] **Add privacy-friendly visitor analytics** (e.g. GoatCounter — free, no cookie-consent banner needed) — gives a real visitor number to point to when showing this off. Also requires the user to sign up first, then hand Claude the tracking snippet to wire in.
 
 **On hold (2026-08-02) — revisit once the site has real traffic/traction:**

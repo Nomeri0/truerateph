@@ -12,12 +12,14 @@
   --card:          #171826;   /* slightly lighter panel/card background        */
   --card-inset:    #10111c;   /* darker inset (the input box)                  */
   --border:        #262838;   /* subtle border lines around cards              */
-  --text:          #e9eaf2;   /* main light text                               */
-  --text-muted:    #8b8ea3;   /* secondary gray text                           */
+  --text:          #f4f5f7;   /* main light text                               */
+  --text-muted:    #9298a8;   /* secondary gray text                           */
   --text-faint:    #5c5f73;   /* faintest text (footer/disclaimer)             */
-  --accent:        #8b8cf0;   /* indigo/purple highlight (buttons, badge)      */
-  --accent-soft:   #2a2b52;   /* faint accent used for borders/backgrounds     */
-  --gold:          #e8c15e;   /* gold — used for the promo badge               */
+  --accent:        #2fbf71;   /* peso green highlight (buttons, badge)         */
+  --accent-rgb:    47, 191, 113;  /* same green, as r,g,b for rgba() below     */
+  --accent-soft:   #1b3d2c;   /* faint accent used for borders/backgrounds     */
+  --gold:          #e8b93f;   /* gold — used for the promo badge               */
+  --gold-rgb:      232, 185, 63;  /* same gold, as r,g,b for rgba() below      */
 }
 
 /* --- Base page setup ------------------------------------------------------- */
@@ -64,9 +66,9 @@ body {
 /* The little pill badge ("Mid-market rate right now…") */
 .badge {
   display: inline-block;
-  border: 1px solid var(--accent-soft);
+  border: 1px solid rgba(var(--gold-rgb), 0.35);
   color: var(--text);
-  background: rgba(139, 140, 240, 0.06);
+  background: rgba(var(--gold-rgb), 0.06);
   border-radius: 999px;          /* fully rounded ends = pill shape */
   padding: 8px 16px;
   font-size: 14px;
@@ -77,10 +79,19 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--gold);
   margin-right: 8px;
   vertical-align: middle;
 }
+
+/* Site wordmark — "TrueRatePH", each part in its own brand color */
+.wordmark {
+  font-size: 13px;
+  font-weight: 700;
+}
+.wordmark-true { color: var(--text); }
+.wordmark-rate { color: var(--accent); }
+.wordmark-ph   { color: var(--text-muted); }
 
 /* Section label above the page name / eyebrow text */
 .eyebrow {
@@ -248,7 +259,7 @@ body {
   transition: background 0.15s ease;   /* smooth hover */
 }
 .btn-primary:hover {
-  background: rgba(139, 140, 240, 0.10);
+  background: rgba(var(--accent-rgb), 0.10);
 }
 
 /* The "10 providers compared · rates updated daily · …" line */
@@ -377,14 +388,14 @@ body {
   font-size: 14px;
 }
 .footer-links a {
-  color: var(--text-muted);
+  color: var(--gold);
   text-decoration: none;
 }
 .footer-links a:hover { color: var(--text); }
 
 /* Savings highlight: how much more the best option gives vs. the worst */
 .savings-callout {
-  background: rgba(139, 140, 240, 0.08);
+  background: rgba(var(--accent-rgb), 0.08);
   border: 1px solid var(--accent-soft);
   border-radius: 14px;
   padding: 16px 18px;
@@ -444,9 +455,9 @@ body {
    Gold, so it stands out clearly from the purple accent used elsewhere. */
 .promo-badge {
   margin-left: auto;       /* push it to the right end of the card head */
-  border: 1px solid rgba(232, 193, 94, 0.45);
+  border: 1px solid rgba(var(--gold-rgb), 0.45);
   color: var(--gold);
-  background: rgba(232, 193, 94, 0.10);
+  background: rgba(var(--gold-rgb), 0.10);
   font-size: 11px;
   font-weight: 600;
   padding: 3px 9px;
@@ -513,16 +524,17 @@ body {
   text-decoration: none;
   background: transparent;
   border: 1px solid var(--border);
-  color: var(--accent);
+  color: var(--text);
   font-size: 16px;
   font-weight: 600;
   padding: 14px;
   border-radius: 12px;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 .btn-send:hover {
-  border-color: var(--accent);
-  background: rgba(139, 140, 240, 0.08);
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(var(--gold-rgb), 0.08);
 }
 
 /* ============================================================

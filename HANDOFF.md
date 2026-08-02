@@ -38,14 +38,14 @@ Nothing here is blocking — the site works fully as-is.
 **Scope decision (2026-07-28): this project is a portfolio exhibit, not a business.** The goal is a polished, live product to point to when showing off what's been built with AI, plus maybe a little passive affiliate income — not competing with the big remittance-comparison apps. This reshuffled the backlog below: things that only matter if you're trying to be a complete/authoritative comparison tool got dropped; things that make it look and feel like a real, finished product got promoted.
 
 **Active backlog — parked until there's time, pull this list out whenever asked "what's next":**
-- [ ] **Brand identity** — colors, fonts, logo. A design framework for this was already worked out with Claude Design (as of 2026-07-28); next session is implementing it on the actual site.
+- [x] **Brand identity — colors.** Applied 2026-08-02, from `content/TrueRatePH Brand Strategy.pdf` (local-only, gitignored — see section 3 for the hex values now baked into `styles.css`). Fonts and logo are still open — the strategy doc only specifies "a clean, confident geometric sans" (no named font) and a wordmark treatment, not an actual logo mark. Pull this back out when ready to pick a font and/or commission a logo.
 - [ ] Apply to each provider's **affiliate program**, then swap the plain provider links for **affiliate links** (one-line edit per provider in `providers.json`'s `url` field).
 - [ ] **Add a personal story** to `about.html` — there's a clearly marked, currently-empty spot for it. Matters more now since the site doubles as a portfolio piece with a story behind it.
 - [ ] **Submit the sitemap to Google Search Console** — quick, free, helps Google index the site faster and gives basic search-traffic data. Requires the user to create the (free) Search Console account first — Claude can't create accounts on someone's behalf.
 - [ ] **Add privacy-friendly visitor analytics** (e.g. GoatCounter — free, no cookie-consent banner needed) — gives a real visitor number to point to when showing this off. Also requires the user to sign up first, then hand Claude the tracking snippet to wire in.
 
 **Deliberately dropped, given the scope decision above — do not resurface these unless the scope changes again:**
-- Finding real standard rates for Xoom, WorldRemit, Western Union (only matters for being a complete/authoritative comparison tool, not an exhibit). Panda Remit's was found and verified via the routine weekly check on 2026-08-01.
+- Finding real standard rates for Xoom, WorldRemit, Western Union, and Panda Remit (only matters for being a complete/authoritative comparison tool, not an exhibit). Panda Remit was briefly (and incorrectly) marked as ranked on 2026-08-01 — see section 6 for the correction made 2026-08-02.
 - Any deeper SEO investment beyond what's already done (content strategy, backlinks, keyword targeting) — growth-business work, not exhibit polish.
 - Talking to a lawyer/accountant re: business registration — revisit only if/when real affiliate income actually starts flowing.
 - Share image (`og:image`), adding more providers over time — nice-to-haves, low priority, only if it comes up naturally.
@@ -62,6 +62,7 @@ A slightly more detailed version of this list, plus the story of how the site wa
 - **No environment variables, no secret values, no backend/server** to configure.
 - **GitHub account:** username `Nomeri0`. **Git identity** used for commits: name `Nomeri0`, email is a GitHub-provided "no-reply" address (keeps the real email private) — already set locally, nothing to redo.
 - **Reference amount** used for the standard comparison: **$500 USD**.
+- **Brand color palette** (from `content/TrueRatePH Brand Strategy.pdf`, applied 2026-08-02): Base `#0E0F1A`, Peso Green `#2FBF71` (primary accent — gains/highlights), Warm Gold `#E8B93F` (promo badge), Alert/Loss `#E2694B` (reserved — not yet used anywhere on the site, only for illustrating an actual loss if that need comes up), Text Primary `#F4F5F7`, Text Muted `#9298A8`. Live in `styles.css`'s `:root` block.
 - **No local preview server is set up** (there's no `.claude/launch.json` in this folder). Since the site is already live at truerateph.com, that's the easiest way to check it — a local preview isn't necessary unless you specifically want to test unpushed changes before they go live.
 
 ---
@@ -95,7 +96,7 @@ A slightly more detailed version of this list, plus the story of how the site wa
 
 - **Nothing is broken.**
 - **Pending by design (not bugs):**
-  - **Xoom, WorldRemit, Western Union** — only promo rates available; shown unranked. No verified standard rate yet. (WorldRemit/Western Union covered by the weekly check; Xoom is on the daily auto-updater and will unlock itself automatically if its real rate ever drops below mid-market.) Panda Remit graduated to ranked on 2026-08-01 once its weekly check found a clear standard-vs-promo split (struck-through $2.99 fee = standard, $0 = promo) — same rate calculator page, just read more carefully.
+  - **Xoom, WorldRemit, Western Union, Panda Remit** — only promo rates available; shown unranked. No verified standard rate yet. (WorldRemit/Western Union/Panda Remit covered by the weekly check; Xoom is on the daily auto-updater and will unlock itself automatically if its real rate ever drops below mid-market.) Panda Remit was briefly marked ranked on 2026-08-01 after the weekly check misread its rate table — the "$2.99 struck through to $0" is a fee discount *inside* a table explicitly labeled "new customers only," not a standard-vs-promo split; the rate itself (62.4748, above mid-market) only ever appears as part of that new-customer package. Caught and reverted to unranked 2026-08-02 (also above the live mid-market rate, the same tell that already flags Xoom). The weekly-check task's instructions were updated with this specific case so it isn't misread again.
   - **Share image (`og:image`)** — not created yet (optional).
   - **About page personal story** — spot is empty (optional).
   - **Affiliate links** — currently plain provider links; swap after joining affiliate programs.

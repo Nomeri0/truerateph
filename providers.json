@@ -112,10 +112,10 @@
       "url": "https://www.pandaremit.com",
       "method": "Bank deposit",
       "rate": 62.4748,
-      "fee": 2.99,
+      "fee": 0,
       "source": "manual",
-      "verified": true,
-      "lastUpdated": "2026-08-01"
+      "verified": false,
+      "lastUpdated": "2026-08-02"
     }
   ]
 }

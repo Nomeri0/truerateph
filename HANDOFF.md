@@ -35,7 +35,11 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 
 Nothing here is blocking — the site works fully as-is.
 
-**Scope decision (2026-07-28): this project is a portfolio exhibit, not a business.** The goal is a polished, live product to point to when showing off what's been built with AI, plus maybe a little passive affiliate income — not competing with the big remittance-comparison apps. This reshuffled the backlog below: things that only matter if you're trying to be a complete/authoritative comparison tool got dropped; things that make it look and feel like a real, finished product got promoted.
+**Scope decision (2026-08-03, supersedes the 2026-07-28 one below): this is now a real growth attempt, not just a portfolio exhibit.** New strategy: pair the site with a YouTube channel, and try to make TrueRatePH one of the top information sites for OFWs (Overseas Filipino Workers) worldwide. Phase 1 (first ~6 months from 2026-08-03): US market only — the corridor the user knows and can speak to confidently. At the 6-month mark, recalibrate: go deeper (more corridors/countries) or let it go, based on real traction. Blog/article content on the site will mostly be **repurposed from YouTube videos** (video/script first, article second), not written from scratch — see `content/` for how writing collaboration works (outline-then-draft or draft-then-polish, user's choice, never an unprompted full rewrite).
+
+Practical effect on the backlog: things dropped below on 2026-07-28 specifically *because* this was "just an exhibit, not a business" no longer have that reasoning holding them back — see the reopened items just below. Items dropped for other reasons (legal/registration, low-priority nice-to-haves) are unaffected by this pivot and stay dropped.
+
+*(Original 2026-07-28 framing, kept for history: "this project is a portfolio exhibit, not a business... not competing with the big remittance-comparison apps." That framing is what's now changed.)*
 
 **Active backlog — parked until there's time, pull this list out whenever asked "what's next":**
 - [x] **Brand identity — colors.** Applied 2026-08-02, from `content/TrueRatePH Brand Strategy.pdf` (local-only, gitignored — see section 3 for the hex values now baked into `styles.css`). Fonts and logo are still open — the strategy doc only specifies "a clean, confident geometric sans" (no named font) and a wordmark treatment, not an actual logo mark. Pull this back out when ready to pick a font and/or commission a logo.
@@ -43,14 +47,17 @@ Nothing here is blocking — the site works fully as-is.
 - [x] **Submit the sitemap to Google Search Console.** Done 2026-08-02 — site verified (verification meta tag lives in `index.html`) and `sitemap.xml` submitted. Search/traffic data will start showing up in Search Console over the following days/weeks.
 - [x] **Add privacy-friendly visitor analytics.** Done 2026-08-02 — GoatCounter tracking snippet added to all 3 pages, pushed live. Dashboard: `truerateph.goatcounter.com` (sign in there to see visit stats; no cookie-consent banner needed since it's cookieless/privacy-friendly).
 
-**On hold (2026-08-02) — revisit once the site has real traffic/traction:**
+**Reopened 2026-08-03 given the new growth strategy (previously dropped as exhibit-only, see history below) — not yet prioritized/sequenced, surface next time "what's next" is asked:**
+- **Finding real standard rates for Xoom, WorldRemit, Western Union, and Panda Remit.** Now matters for real — being a complete/authoritative comparison tool is the whole point of the new strategy, not just nice-to-have. (Panda Remit was briefly, incorrectly, marked ranked on 2026-08-01 on bad data — corrected 2026-08-02, see section 6. That correction stands regardless of this reopening — don't re-rank it without a genuinely verified standard rate.)
+- **Deeper SEO investment** (content strategy, backlinks, keyword targeting) — now directly relevant, especially paired with the YouTube-repurposed blog content plan above.
+- **A blog/articles section on the site** — new idea from this pivot, not yet built. Would follow the same hand-written-HTML pattern as `about.html` (no CMS/build tooling), get added to `sitemap.xml`, and linked from nav. Content pipeline: YouTube video → script/outline → article (see collaboration note above). Not yet started — no outline, no first topic picked.
+
+**On hold — revisit once the site has real traffic/traction (timeline now roughly = the 6-month Phase 1 checkpoint above):**
 - **Affiliate links.** Research already done 2026-08-02 — see `content/affiliate-programs-research.md` for the full breakdown, don't redo it. Short version: 8 of 10 providers route through 3 affiliate networks (Impact → Ria/WorldRemit/Panda Remit; Partnerize → Wise/Instarem; FlexOffers → Remitly/MoneyGram/Western Union), 5 of those are high-confidence/branded programs, 3 are network-listed-only. Xoom and Sendwave don't have a usable program. Deliberately paused because several of these programs weigh site traffic in approval, and a pre-traction site is likely to get rejected — better to apply once there's something to point to. When resumed: sign up for the 3 networks and apply to each program (account creation + likely tax/payout info, which Claude can't do on the user's behalf) — then it's a quick one-line-per-provider edit in `providers.json`'s `url` field once approved.
 
-**Deliberately dropped, given the scope decision above — do not resurface these unless the scope changes again:**
-- Finding real standard rates for Xoom, WorldRemit, Western Union, and Panda Remit (only matters for being a complete/authoritative comparison tool, not an exhibit). Panda Remit was briefly (and incorrectly) marked as ranked on 2026-08-01 — see section 6 for the correction made 2026-08-02.
-- Any deeper SEO investment beyond what's already done (content strategy, backlinks, keyword targeting) — growth-business work, not exhibit polish.
+**Deliberately dropped — unaffected by the 2026-08-03 pivot, do not resurface unless something else changes:**
 - Talking to a lawyer/accountant re: business registration — revisit only if/when real affiliate income actually starts flowing.
-- Share image (`og:image`), adding more providers over time — nice-to-haves, low priority, only if it comes up naturally.
+- Share image (`og:image`) — nice-to-have, low priority, only if it comes up naturally.
 
 A slightly more detailed version of this list, plus the story of how the site was built, lives in the [project journal](C:\Users\Nomerio\Desktop\ClaudeProjects\Journal\TrueRatePH.md).
 

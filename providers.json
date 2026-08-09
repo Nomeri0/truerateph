@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-08",
+    "lastUpdated": "2026-08-09",
     "referenceAmountUSD": 500,
     "midMarketFallback": 60.86,
     "ratePolicy": "standard-only",
@@ -16,7 +16,7 @@
       "fee": 9.81,
       "source": "auto",
       "verified": true,
-      "lastUpdated": "2026-08-08"
+      "lastUpdated": "2026-08-09"
     },
     {
       "name": "Remitly",
@@ -34,11 +34,11 @@
       "initials": "XO",
       "url": "https://www.xoom.com",
       "method": "Bank deposit",
-      "rate": 58.9481,
+      "rate": 58.9077,
       "fee": 0.0,
       "source": "auto",
       "verified": true,
-      "lastUpdated": "2026-08-08"
+      "lastUpdated": "2026-08-09"
     },
     {
       "name": "MoneyGram",
@@ -60,7 +60,7 @@
       "fee": 0.0,
       "source": "auto",
       "verified": true,
-      "lastUpdated": "2026-08-08"
+      "lastUpdated": "2026-08-09"
     },
     {
       "name": "Ria",

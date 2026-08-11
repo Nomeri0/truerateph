@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-10",
+    "lastUpdated": "2026-08-11",
     "referenceAmountUSD": 500,
     "midMarketFallback": 60.83,
     "ratePolicy": "standard-only",
@@ -12,11 +12,11 @@
       "initials": "WS",
       "url": "https://wise.com/us/send-money/send-money-to-philippines",
       "method": "Bank deposit",
-      "rate": 60.7958,
+      "rate": 60.9942,
       "fee": 9.81,
       "source": "auto",
-      "verified": true,
-      "lastUpdated": "2026-08-10"
+      "verified": false,
+      "lastUpdated": "2026-08-11"
     },
     {
       "name": "Remitly",
@@ -34,11 +34,11 @@
       "initials": "XO",
       "url": "https://www.xoom.com",
       "method": "Bank deposit",
-      "rate": 58.8738,
+      "rate": 58.9646,
       "fee": 0.0,
       "source": "auto",
       "verified": true,
-      "lastUpdated": "2026-08-10"
+      "lastUpdated": "2026-08-11"
     },
     {
       "name": "MoneyGram",
@@ -56,11 +56,11 @@
       "initials": "IN",
       "url": "https://www.instarem.com",
       "method": "Bank deposit",
-      "rate": 60.137,
+      "rate": 60.5484,
       "fee": 0.0,
       "source": "auto",
       "verified": true,
-      "lastUpdated": "2026-08-10"
+      "lastUpdated": "2026-08-11"
     },
     {
       "name": "Ria",

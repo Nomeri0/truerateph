@@ -15,8 +15,8 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 - [x] **Live mid-market rate** on the landing page — pulls the real USD→PHP rate on each visit (free source, no key), with a fallback number if offline.
 - [x] **"You send" amount box** with up/down arrow buttons (each click = $15) and typing. The amount carries into the results page.
 - [x] **Results page** builds itself from a single data file (`providers.json`):
-  - **7 ranked providers** (real standard rates): Ria, Instarem, MoneyGram, Sendwave, Wise, Remitly, Panda Remit. Ranked by how many pesos the family receives. #1 is highlighted.
-  - **3 unranked providers** shown separately: Xoom, WorldRemit, and Western Union all show a **promo rate** (gold badge, big white number) — none has a confirmed standard rate yet.
+  - **6 ranked providers** (real standard rates): Ria, Instarem, MoneyGram, Sendwave, Wise, Remitly. Ranked by how many pesos the family receives. #1 is highlighted.
+  - **4 unranked providers** shown separately: Xoom, WorldRemit, Western Union, and Panda Remit all show a **promo rate** (gold badge, big white number) — none has a confirmed standard rate yet.
   - Recalculates and re-sorts **live with a slide animation** as the amount changes.
   - **"Your family gets ₱X more"** savings callout (best vs. worst).
   - **"Send with…" buttons** open each provider's real website in a new tab.

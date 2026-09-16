@@ -538,6 +538,59 @@ body {
 }
 
 /* ============================================================
+   BLOG (blog/index.html + blog/<slug>.html articles)
+   Article pages reuse the About page's typography classes
+   (.about-lead / .about-h2 / .about-body / .about-list) instead
+   of a separate system — one less set of styles to keep in sync.
+   ============================================================ */
+.post-list { margin-top: 8px; }
+.post-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+.post-card:hover { border-color: var(--accent); }
+.post-title {
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.post-date {
+  color: var(--text-faint);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.post-excerpt {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.post-list-empty {
+  color: var(--text-muted);
+  font-size: 16px;
+  padding: 10px 0 4px;
+}
+/* Date/read-time line under an individual article's title */
+.article-meta {
+  color: var(--text-faint);
+  font-size: 14px;
+  margin: -6px 0 24px;
+}
+/* Blog articles (body has class="blog-post") get near-white body text —
+   lighter than the About page's muted gray, which suits a short mission
+   statement but reads as too dim over a full-length article. */
+.blog-post .about-body,
+.blog-post .about-list {
+  color: var(--text);
+}
+
+/* ============================================================
    RESPONSIVE — adjustments for narrow phone screens
    Anything inside here only applies when the screen is <= 500px wide.
    ============================================================ */

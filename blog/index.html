@@ -1,0 +1,78 @@
+<!-- ============================================================
+     TrueRate PH — Blog index (blog/index.html)
+     Lists every article. No CMS/build step — to publish a new
+     post:
+       1. Write it as its own file: blog/your-slug.html (copy
+          about.html's <head> boilerplate, and use .about-h2 /
+          .about-body / .about-list for the article body so it
+          matches the rest of the site with zero new CSS).
+       2. Add one <a class="post-card"> block below, above (or
+          instead of, once there's at least one post) the
+          empty-state paragraph.
+       3. Add the new page to ../sitemap.xml.
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ SEO: how this page looks in search & when shared ============ -->
+  <title>Blog | TrueRate PH</title>
+  <meta name="description" content="Guides on sending money to the Philippines — real rates, real fees, and the tricks money transfer apps don't put in their ads.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0e0f1a">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <!-- Social share preview (Facebook, Messenger, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TrueRate PH">
+  <meta property="og:title" content="TrueRate PH Blog">
+  <meta property="og:description" content="Guides on sending money to the Philippines — real rates, real fees, and the tricks money transfer apps don't put in their ads.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://truerateph.com/blog/index.html">
+  <link rel="canonical" href="https://truerateph.com/blog/index.html">
+
+  <!-- Load the "Inter" font from Google Fonts (matches the design) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../styles.css?v=13">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Back to the landing page -->
+    <a class="back-link" href="../index.html">&lsaquo; <span class="wordmark-true">True</span><span class="wordmark-rate">Rate</span><span class="wordmark-ph">PH</span></a>
+
+    <h1 class="hero-headline" style="font-size:36px;">Blog</h1>
+    <p class="about-lead" style="font-size:17px; margin-top:10px;">
+      Real rates, real fees, and the tricks money transfer apps don't put in
+      their ads.
+    </p>
+
+    <!-- ▼▼▼ ADD NEW POSTS HERE, newest first ▼▼▼
+         <a class="post-card" href="your-slug.html">
+           <p class="post-title">Your Title Here</p>
+           <p class="post-date">Sep 2026</p>
+           <p class="post-excerpt">One or two sentence teaser.</p>
+         </a>
+         Remove the empty-state paragraph below once a post exists.
+         ▲▲▲ ------------------------------------------ ▲▲▲ -->
+    <div class="post-list" id="postList">
+      <a class="post-card" href="why-your-rate-drops-after-first-transfer.html">
+        <p class="post-title">Why Your Money Transfer Rate Gets Worse After the First Send</p>
+        <p class="post-date">Sep 2026</p>
+        <p class="post-excerpt">That great exchange rate you got on your first transfer? It usually doesn't last. Here's why, and how to spot the real everyday rate before you send.</p>
+      </a>
+    </div>
+
+    <p class="footer-links"><a href="../results.html">See today's rates</a> &nbsp;&middot;&nbsp; <a href="../about.html">Why we built TrueRate PH</a></p>
+
+  </div>
+
+  <!-- Privacy-friendly visitor analytics (GoatCounter) — no cookies, no personal data -->
+  <script data-goatcounter="https://truerateph.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

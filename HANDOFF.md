@@ -15,16 +15,16 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 - [x] **Live mid-market rate** on the landing page — pulls the real USD→PHP rate on each visit (free source, no key), with a fallback number if offline.
 - [x] **"You send" amount box** with up/down arrow buttons (each click = $15) and typing. The amount carries into the results page.
 - [x] **Results page** builds itself from a single data file (`providers.json`):
-  - **6 ranked providers** (real standard rates): Ria, Instarem, MoneyGram, Sendwave, Wise, Remitly. Ranked by how many pesos the family receives. #1 is highlighted.
-  - **4 unranked providers** shown separately: Xoom, WorldRemit, Western Union, and Panda Remit all show a **promo rate** (gold badge, big white number) — none has a confirmed standard rate yet.
+  - **4 ranked providers** as of 2026-09-18 (real standard rates): Ria, Instarem, Sendwave, Wise (was 6 until Remitly and MoneyGram were pulled for stale data — they should return once the weekly check confirms fresh rates). Ranked by how many pesos the family receives. #1 is highlighted.
+  - **Unranked providers** shown separately: WorldRemit, Western Union, and Panda Remit show a **promo rate** (gold badge, big white number); Remitly and MoneyGram show "Standard rate not yet verified"; Xoom likewise.
   - Recalculates and re-sorts **live with a slide animation** as the amount changes.
   - **"Your family gets ₱X more"** savings callout (best vs. worst).
   - **"Send with…" buttons** open each provider's real website in a new tab.
 - [x] **Honesty features**: "rates last verified" date, standard-vs-promo note, a disclaimer (rates are estimates; we're not a money transfer provider), and a commission disclosure.
 - [x] **SEO**: search titles + descriptions, Facebook/Messenger share tags, a favicon (₱ icon), `robots.txt`, `sitemap.xml`, canonical URLs — all pointing at the real `truerateph.com` domain now.
 - [x] **Two auto-refresh systems** (see section 4):
-  - Daily script for the 5 providers with a free data feed.
-  - Weekly scheduled Claude task for the 5 providers without one (browses each site by hand, updates data, pushes live, and sends a push notification only when a rate actually changes).
+  - Daily script for the providers still in the free data feed (Wise, Instarem, Xoom — Xoom is currently missing from the feed, see section 6).
+  - Weekly scheduled Claude task for the 7 providers without one (Ria, Sendwave, WorldRemit, Western Union, Panda Remit, plus Remitly and MoneyGram as of 2026-09-18; browses each site by hand, updates data, pushes live, and sends a push notification only when a rate actually changes).
 - [x] **Everything saved in Git** (version control), pushed to GitHub, nothing unsaved.
 
 **Nothing is currently broken.** (A display bug where a pending provider card showed the word "undefined" was found and fixed after launch.)
@@ -52,8 +52,18 @@ Practical effect on the backlog: things dropped below on 2026-07-28 specifically
 
 **Channel pivot (2026-09-16): SEO/blog is now the primary growth lever, YouTube is paused, not dropped.** Status check going into this decision: ~6 weeks into the Aug 2026 growth push, zero commits since 2026-08-15 that weren't bot rate-refreshes, GoatCounter/Search Console traffic near-zero or unchecked, and four fully-written pieces of content sitting unpublished in `content/` since 2026-07-26 (YouTube build-story script, LinkedIn post, X thread, TikTok script) plus a locked 9-section outline for the "Pinoy Field Notes" channel's first video from 2026-08-04 — none of it ever went out. User's realistic bandwidth going forward: **2-4 hrs/week**. Given that, and given the YouTube-channel plan was the more time-intensive, lower-leverage path (filming/editing vs. writing), the user chose to focus on **SEO/written content on the site itself** instead. Pinoy Field Notes and the unpublished scripts aren't deleted or ruled out — just not the active plan; revisit if the SEO push stalls or bandwidth increases.
 - [x] **Blog infrastructure — built 2026-09-16.** `blog/index.html` (listing page) plus the pattern for individual posts (`blog/<slug>.html`, copy `about.html`'s `<head>` boilerplate, article body reuses `.about-h2`/`.about-body`/`.about-list` — no new typography system). Linked from the footer of `index.html`, `results.html`, and `about.html`; added to `sitemap.xml`. `styles.css` bumped to `?v=12` (added `.post-card`/`.post-title`/`.post-date`/`.post-excerpt`/`.post-list-empty`/`.article-meta`). Verified in the browser: all nav links resolve, no console errors.
-- [x] **Article #1 published — 2026-09-16.** [`blog/why-your-rate-drops-after-first-transfer.html`](blog/why-your-rate-drops-after-first-transfer.html) — "Why Your Money Transfer Rate Gets Worse After the First Send," the standard-vs-promo differentiator angle. Linked from `blog/index.html` and `sitemap.xml`. Reuses the $500/61.9-vs-58.2/₱2,000 numbers already established in `content/x-post.md`/`content/youtube-script.md` for brand consistency. **Not yet pushed to GitHub** — still needs `git add`/commit/push to actually go live at truerateph.com.
-- [ ] **Article #2 — not started.** Per the content-angle plan above: a provider head-to-head (e.g. Wise vs. Remitly) using data already in `providers.json`, or the $500-corridor comparison piece. Next up whenever there's another 2-4 hr block.
+- [x] **Article #1 published — 2026-09-16.** [`blog/why-your-rate-drops-after-first-transfer.html`](blog/why-your-rate-drops-after-first-transfer.html) — "Why Your Money Transfer Rate Gets Worse After the First Send," the standard-vs-promo differentiator angle. Linked from `blog/index.html` and `sitemap.xml`. Reuses the $500/61.9-vs-58.2/₱2,000 numbers already established in `content/x-post.md`/`content/youtube-script.md` for brand consistency. Committed and pushed (`24d13be`); confirmed live at truerateph.com (HTTP 200) on 2026-09-18.
+- **10-article backlog planned 2026-09-16 — write in this exact order whenever "post an article" is asked, don't reshuffle without the user explicitly asking to:**
+  1. [ ] "Wise vs. Remitly: Which Actually Gives You More Pesos in 2026?" — head-to-head using `providers.json` data.
+  2. [ ] "MoneyGram vs. Ria vs. Instarem: Which One Should You Actually Use?" — second head-to-head, same pattern.
+  3. [ ] "What Is the Mid-Market Rate, and Why It's the Only Number That Matters?" — foundational explainer, links to the site's live rate ticker.
+  4. [ ] "7 Signs a Money Transfer App Is Hiding Its Real Rate From You" — direct sequel to article #1's angle.
+  5. [ ] "Bank Deposit vs. Cash Pickup vs. GCash: Which Gets Your Family Paid Fastest?" — delivery-method guide (a dimension deliberately dropped from the results page itself, see section 5 — the article can cover it in prose even though the site doesn't rank by it).
+  6. [ ] "How Much Does It Really Cost to Send Money to the Philippines?" — fees vs. exchange-rate markup explainer.
+  7. [ ] "Sending Money to the Philippines for the First Time? Here's What Nobody Tells You" — top-of-funnel/beginner piece.
+  8. [ ] "The Cheapest Way to Send $500 to the Philippines Right Now" — reuses the site's own $500 reference amount; designed as a living page to refresh periodically rather than rewrite.
+  9. [ ] "Sending Money Home for Christmas: Don't Let the Holiday Rush Cost You" — seasonal; publish by early November 2026 so it's indexed in time.
+  10. [ ] "Does Timing Actually Matter? Best Day and Time to Send Money to the Philippines" — myth-busting mechanism piece, closes out the series.
 - **Content angle:** lead with TrueRatePH's actual differentiator — the standard-vs-promo-rate distinction — rather than competing head-on for generic high-competition terms like "send money to Philippines" (already dominated by WorldRemit, CompareRemit, SendMoneyCompare, Monito, and the providers' own blogs). Long-tail, specific comparison content (e.g. provider-vs-provider, "why your rate gets worse after the first transfer") is the realistic wedge at zero domain authority.
 - **Cadence sized to the 2-4 hrs/week budget:** roughly one article every 1-2 weeks is the realistic pace, not a content calendar that assumes more time than exists.
 
@@ -85,11 +95,11 @@ A slightly more detailed version of this list, plus the story of how the site wa
 ## 4. How rates stay up to date 🔄
 
 **Daily (automatic, no oversight needed):**
-- `update_rates.py` = the "engine." Refreshes Wise, Remitly, MoneyGram, Instarem, and Xoom from the free Wise feed + live mid-market rate.
+- `update_rates.py` = the "engine." Refreshes Wise, Instarem, and Xoom from the free Wise feed + live mid-market rate. **Staleness guard (added 2026-09-18):** if an auto provider drops out of the feed for more than 3 days, its rate is cleared (old value kept in `lastKnownRate`/`lastKnownFee`), it shows as "Standard rate not yet verified," and the Actions log prints a `::warning::`. It heals itself if the provider reappears in the feed.
 - `.github/workflows/update-rates.yml` = the "timer." Runs the engine automatically every day on GitHub's servers and pushes any changes.
 
 **Weekly (automatic, notifies on real changes):**
-- A Claude scheduled task (`truerateph-weekly-manual-rate-check`, runs Fridays 3pm) checks the 5 providers with no public data feed — Ria, Sendwave, WorldRemit, Western Union, Panda Remit — by visiting each site directly, and updates/pushes `providers.json` if a rate changed. A push notification is sent only on runs where something actually changed. Manage/reschedule it from the Scheduled section of the app sidebar.
+- A Claude scheduled task (`truerateph-weekly-manual-rate-check`, runs Fridays 3pm) checks the 7 providers with no public data feed — Ria, Sendwave, WorldRemit, Western Union, Panda Remit, Remitly, MoneyGram — by visiting each site directly, and updates/pushes `providers.json` if a rate changed. A push notification is sent only on runs where something actually changed. Manage/reschedule it from the Scheduled section of the app sidebar.
 
 ---
 
@@ -99,7 +109,7 @@ A slightly more detailed version of this list, plus the story of how the site wa
 - **The `verified` flag in `providers.json`** controls where a provider shows up: `true` = ranked (real standard rate); `false` + a rate = promo shown in the unranked section (gold badge); `false` + empty rate = "pending / not yet verified."
 - **Automatic promo guardrail:** The daily updater flags any auto rate that comes back *above* the mid-market rate as a promo (you can't legitimately beat the true rate), so it drops to the unranked tier by itself. That's why **Xoom** is unranked.
 - **Delivery speeds were removed on purpose:** the old "Minutes / 1 day" labels were guesses, not real data, and they clashed with the fees. Cards now show only **"Bank deposit"** (the honest comparison basis). Fees shown are for bank deposit; faster options cost more (there's a note saying so).
-- **Only 5 providers have a free data source** (via the Wise feed). The other 5 are checked weekly by hand (see section 4). Getting their *standard* rate is hard because their sites hide it behind promos/logins — the long-term fix is affiliate data feeds, not scraping.
+- **Only 3 providers still have a free data source** (via the Wise feed: Wise, Instarem, Xoom). The feed used to cover Remitly and MoneyGram too but silently dropped them (last seen 2026-07-15) — the updater left their old rates sitting there looking fresh for 2+ months while the page's single "Rates last verified" banner kept updating. Found and fixed 2026-09-18 (staleness guard, both moved to the weekly manual check). The other 7 are checked weekly by hand (see section 4). Getting their *standard* rate is hard because their sites hide it behind promos/logins — the long-term fix is affiliate data feeds, not scraping.
 - **Do NOT add money-handling or automated logins.** Staying a pure info/referral site keeps you out of heavy financial regulation. Automated login-scraping is fragile, often against terms, and Claude won't handle your passwords.
 - **Cache-busting version numbers:** links like `styles.css?v=8` and `script.js?v=6` have a number that gets bumped whenever that file changes, so browsers load the new version instead of an old cached one. `providers.json` is fetched with "never cache" so rates are always fresh.
 - **DNS/HTTPS notes:** the domain was bought through Namecheap; 4 A records point the bare domain at GitHub Pages' IPs, and a CNAME points `www` at the GitHub Pages address. GitHub auto-issues the HTTPS certificate once DNS checks out (took under an hour here) — nothing to renew manually.
@@ -110,6 +120,9 @@ A slightly more detailed version of this list, plus the story of how the site wa
 ## 6. Broken / half-finished ⚠️
 
 - **Nothing is broken.**
+- **Pending after the 2026-09-18 stale-data fix (expected to resolve on its own):**
+  - **Remitly and MoneyGram** — now `source: manual`, `rate: null`, showing "Standard rate not yet verified" until the weekly task finds a confirmed standard rate. Their old values (59.775 / 61.2106 + $1.99) are kept in `lastKnownRate`/`lastKnownFee`.
+  - **Xoom** — still `auto` but gone from the feed since 2026-09-05; demoted to unverified by hand on 2026-09-18 (same thing the staleness guard does), old value in `lastKnownRate`. Decide whether to move it to the weekly manual check too.
 - **Pending by design (not bugs):**
   - **Xoom, WorldRemit, Western Union, Panda Remit** — only promo rates available; shown unranked. No verified standard rate yet. (WorldRemit/Western Union/Panda Remit covered by the weekly check; Xoom is on the daily auto-updater and will unlock itself automatically if its real rate ever drops below mid-market.) Panda Remit was briefly marked ranked on 2026-08-01 after the weekly check misread its rate table — the "$2.99 struck through to $0" is a fee discount *inside* a table explicitly labeled "new customers only," not a standard-vs-promo split; the rate itself (62.4748, above mid-market) only ever appears as part of that new-customer package. Caught and reverted to unranked 2026-08-02 (also above the live mid-market rate, the same tell that already flags Xoom). The weekly-check task's instructions were updated with this specific case so it isn't misread again.
   - **Share image (`og:image`)** — not created yet (optional).

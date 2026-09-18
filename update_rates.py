@@ -14,6 +14,13 @@ Guardrail (the standard-rates-only policy, automated):
   almost certainly a first-transfer promo. Those are marked verified=false
   and automatically drop to the unranked "pending" tier.
 
+Staleness guard:
+  If an 'auto' provider drops out of the feed, its old rate is NOT left
+  sitting there looking fresh. After STALE_AFTER_DAYS without an update it
+  is demoted to "Standard rate not yet verified" (rate cleared, old value
+  kept in lastKnownRate/lastKnownFee) and a GitHub Actions warning is
+  printed. If it reappears in the feed it heals itself automatically.
+
 Safety:
   - Fetches everything FIRST; if any request fails, it exits WITHOUT
     touching providers.json (so a bad run never corrupts your data).
@@ -26,7 +33,7 @@ Run it by hand with:  python update_rates.py
 import json
 import sys
 import urllib.request
-from datetime import date
+from datetime import date, datetime
 
 STORE_PATH = "providers.json"
 REFERENCE_AMOUNT = 500
@@ -37,6 +44,9 @@ WISE_URL = (
 FX_URL = "https://open.er-api.com/v6/latest/USD"
 # Providers give at best the mid-market rate; anything above it is a promo.
 PROMO_TOLERANCE = 0.01
+# How long an 'auto' provider may go missing from the feed before its stale
+# rate is pulled from the ranking (the feed skips a day now and then).
+STALE_AFTER_DAYS = 3
 
 
 def fetch_json(url):
@@ -86,7 +96,7 @@ def main():
         return 1
 
     today = date.today().isoformat()
-    ranked, flagged, missing = [], [], []
+    ranked, flagged, missing, demoted = [], [], [], []
 
     # 3. Update ONLY the 'auto' providers.
     for provider in store["providers"]:
@@ -95,8 +105,21 @@ def main():
         key = provider["name"].strip().lower()
         if key not in wise:
             missing.append(provider["name"])
+            # Staleness guard: don't let an old rate pose as a fresh one.
+            last = provider.get("lastUpdated")
+            age = (date.today() - datetime.strptime(last, "%Y-%m-%d").date()).days if last else None
+            if age is not None and age > STALE_AFTER_DAYS and provider.get("rate") is not None:
+                provider["lastKnownRate"] = provider["rate"]
+                provider["lastKnownFee"] = provider.get("fee")
+                provider["rate"] = None
+                provider["fee"] = None
+                provider["verified"] = False
+                demoted.append("{} (last seen {})".format(provider["name"], last))
             continue
         rate, fee = wise[key]
+        # Back in the feed: drop any leftover "last known" values.
+        provider.pop("lastKnownRate", None)
+        provider.pop("lastKnownFee", None)
         provider["rate"] = round(rate, 4)
         provider["fee"] = round(fee, 2)
         provider["lastUpdated"] = today
@@ -120,6 +143,10 @@ def main():
     print("Flagged as promo (unranked):", ", ".join(flagged) or "none")
     if missing:
         print("Not found in feed (left unchanged):", ", ".join(missing))
+    if demoted:
+        # "::warning::" shows up as a yellow annotation on the Actions run.
+        print("::warning::Auto providers gone from the feed, now UNVERIFIED: "
+              + ", ".join(demoted) + " - needs a manual check or a new source.")
     return 0
 
 

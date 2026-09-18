@@ -35,6 +35,23 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 
 Nothing here is blocking — the site works fully as-is.
 
+### ▶ Next-time checklist (added 2026-09-18 — start here)
+
+**The three follow-ups from the article #4 publish:**
+- [ ] **Request indexing in Google Search Console** for `blog/signs-app-is-hiding-its-real-rate.html` (user-only step; the sitemap will also pick it up on its own).
+- [ ] **Link article #3 into article #4** once #3 (mid-market explainer) is published — TODO comment sits at the top of `blog/signs-app-is-hiding-its-real-rate.html`.
+- [ ] **Check what the Friday 2026-09-18 weekly rate check found for Remitly and MoneyGram** (look at `git log` for a "Weekly manual rate recheck" commit and their entries in `providers.json`). If it confirmed real standard rates, articles #1 and #2 are unblocked; if not, they stay `rate: null` / "not yet verified" and #1/#2 stay on hold.
+
+**Other open items surfaced 2026-09-18 (not done yet):**
+- [ ] **Wise "flicker to promo" risk — needs a decision.** The updater's promo guardrail allows only a ₱0.01 gap above mid-market (`PROMO_TOLERANCE` in `update_rates.py`). In a test the live Wise feed (62.897) was above the free FX source (62.7776), which would have flagged Wise itself as a promo and unranked it. Probably safe at the 00:00 UTC run (both sources update near then), but fragile. Options: widen the tolerance slightly (also loosens promo detection) or compare against Wise's own rate. Watch `git log` for a day where Wise vanishes from the ranking.
+- [ ] **Western Union lead:** Wise's comparison feed lists WU at 61.02 with a $1.99 fee (2026-09-18), vs the 63.77 promo we show. Possibly the standard rate we've been looking for — verify the basis matches (bank deposit) before ranking it.
+- [ ] **Xoom:** decide whether to move it to the weekly manual check (currently `auto`, demoted to unverified because it's gone from the feed).
+- [ ] **Manual providers' `lastUpdated` goes stale on no-change weeks** — the weekly task skips the commit when nothing changed, so Ria/Sendwave still show 2026-09-01 despite being rechecked. Matters if per-provider "as of" dates are added to the cards (option 3 from the stale-rate discussion, not built).
+- [ ] **Watch the daily Actions log** for the new `::warning::` line (means an auto provider has dropped out of the feed).
+- [ ] **Christmas article (#9) deadline:** must be live by early November 2026 — start by mid-October even if the other articles aren't done.
+- [ ] **Next article to write:** #3 (mid-market explainer), then #1/#2 once Remitly/MoneyGram data is trusted. #4 is already published.
+- [ ] **Still open from before:** add a personal story to `about.html`; optional personal anecdote in article #4's intro; fonts/logo for the brand; affiliate links (on hold until traction).
+
 **Scope decision (2026-08-03, supersedes the 2026-07-28 one below): this is now a real growth attempt, not just a portfolio exhibit.** New strategy: pair the site with a YouTube channel, and try to make TrueRatePH one of the top information sites for OFWs (Overseas Filipino Workers) worldwide. Phase 1 (first ~6 months from 2026-08-03): US market only — the corridor the user knows and can speak to confidently. At the 6-month mark, recalibrate: go deeper (more corridors/countries) or let it go, based on real traction. Blog/article content on the site will mostly be **repurposed from YouTube videos** (video/script first, article second), not written from scratch — see `content/` for how writing collaboration works (outline-then-draft or draft-then-polish, user's choice, never an unprompted full rewrite).
 
 Practical effect on the backlog: things dropped below on 2026-07-28 specifically *because* this was "just an exhibit, not a business" no longer have that reasoning holding them back — see the reopened items just below. Items dropped for other reasons (legal/registration, low-priority nice-to-haves) are unaffected by this pivot and stay dropped.

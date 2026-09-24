@@ -1,0 +1,280 @@
+<!-- ============================================================
+     TrueRate PH — Blog post #3: what the mid-market rate is
+     Follows the about.html pattern: same head boilerplate, body
+     uses .about-lead / .about-h2 / .about-body / .about-list —
+     no new CSS.
+
+     This is the foundational explainer the other articles point
+     their "mid-market rate" mentions at (articles #1 and #4 both
+     link here).
+
+     NAMING (decided 2026-09-24): "mid-market rate" is kept in the
+     title, H1, slug, meta and JSON-LD — it's the SEO target and
+     the term #1/#4 link to — but the body mostly says "the real
+     exchange rate" and calls a provider's number "the app's rate."
+     They are NOT synonyms: an app's quote is an exchange rate too,
+     so swapping the term everywhere would destroy the article's
+     central comparison. The "Isn't that just the exchange rate?"
+     section exists to settle that for readers.
+
+     Deliberately scoped to not eat article #6 (fees vs. markup)
+     or #10 (timing — kept to one line). All example numbers are
+     hypothetical; App B's ₱30,591 deliberately matches the same
+     example in article #4.
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ SEO: how this page looks in search & when shared ============ -->
+  <title>What Is the Mid-Market Rate? | TrueRate PH</title>
+  <meta name="description" content="The mid-market rate is the real exchange rate, before any app adds its profit. Here's what it means in plain English, and how to check how much an app is really charging you.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0e0f1a">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <!-- Social share preview (Facebook, Messenger, etc.) -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TrueRate PH">
+  <meta property="og:title" content="What Is the Mid-Market Rate, and Why It's the Only Number That Matters?">
+  <meta property="og:description" content="The real exchange rate, before anyone adds their profit. What it means in plain English, and how to check how much an app is really charging you.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://truerateph.com/blog/what-is-the-mid-market-rate.html">
+  <link rel="canonical" href="https://truerateph.com/blog/what-is-the-mid-market-rate.html">
+
+  <!-- Load the "Inter" font from Google Fonts (matches the design) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../styles.css?v=13">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Is the Mid-Market Rate, and Why It's the Only Number That Matters?",
+    "description": "The mid-market rate is the real exchange rate, before any money transfer app adds its profit. What it means in plain English, and how to check how much an app is really charging you when you send money to the Philippines.",
+    "datePublished": "2026-09-24",
+    "author": { "@type": "Organization", "name": "TrueRate PH" },
+    "publisher": { "@type": "Organization", "name": "TrueRate PH" },
+    "inLanguage": "en"
+  }
+  </script>
+</head>
+<body class="blog-post">
+  <div class="container">
+
+    <!-- Back to the blog index -->
+    <a class="back-link" href="index.html">&lsaquo; <span class="wordmark-true">True</span><span class="wordmark-rate">Rate</span><span class="wordmark-ph">PH</span> Blog</a>
+
+    <h1 class="hero-headline" style="font-size:34px;">What Is the Mid-Market Rate, and Why It's the Only Number That Matters?</h1>
+    <p class="article-meta">Sep 2026 &middot; 6 min read</p>
+
+    <p class="about-lead">
+      Search &ldquo;USD to PHP&rdquo; on Google and you get one number. Open a
+      money transfer app and you get a smaller one. That first number is the
+      <strong>real exchange rate</strong> &mdash; its proper name is the
+      <strong>mid-market rate</strong> &mdash; and once you know what it is,
+      you can judge any app in about a minute.
+    </p>
+
+    <!-- OPTIONAL: a sentence or two of personal experience here — e.g. the first
+         time you noticed the Google number and the app's number didn't match —
+         would make this opening land harder. Left for the user to write. -->
+
+    <h2 class="about-h2">Isn't that just the exchange rate?</h2>
+    <p class="about-body">
+      Almost. Here's the difference, because it's the thing that makes
+      everything else click.
+    </p>
+    <p class="about-body">
+      <strong>Every rate you see is an exchange rate.</strong> When an app
+      offers you 60.14 pesos per dollar, that's an exchange rate too. So
+      &ldquo;exchange rate&rdquo; on its own doesn't tell you much &mdash;
+      there are dozens of them, and every app has its own.
+    </p>
+    <p class="about-body">
+      The mid-market rate is <strong>the real one</strong>: the rate before
+      anybody adds their profit. That's why it gets its own name. The rest of
+      this article just calls it <strong>the real exchange rate</strong>, and
+      calls the app's number <strong>the app's rate</strong>.
+    </p>
+
+    <h2 class="about-h2">Where the real rate comes from</h2>
+    <p class="about-body">
+      Picture a money changer with a board outside. It shows two prices:
+      <em>We Buy 61.80</em> and <em>We Sell 62.20</em>. They buy dollars a
+      little cheap and sell them a little dear, and that difference is how they
+      earn. The true value of the dollar sits in the middle of those two
+      numbers.
+    </p>
+    <p class="about-body">
+      The same thing happens between big banks, just far bigger and far faster.
+      They buy and sell currency all day, and the middle of those two prices is
+      the real exchange rate. That's where the name mid-market comes from
+      &mdash; the middle of the market.
+    </p>
+    <p class="about-body">
+      The important part is what's <em>not</em> in it: no fee, no commission,
+      no profit for anybody. It's the plain value of the dollar before a
+      company adds what it wants to earn. You can see it by searching
+      &ldquo;USD to PHP&rdquo; on Google, and it's the number at the top of the
+      <a href="../index.html">TrueRate PH homepage</a>, refreshed daily.
+    </p>
+
+    <h2 class="about-h2">Why no app gives you that exact rate</h2>
+    <p class="about-body">
+      Almost nobody hands you the real exchange rate for free &mdash; and that
+      by itself isn't a scam. Sending money costs the company something. They
+      pay staff, they check every transfer for fraud, and they pay partners in
+      the Philippines to deliver the pesos.
+    </p>
+    <p class="about-body">
+      They cover that in one of two ways: a fee you can see, or a rate that's
+      slightly worse than the real one. Both are normal. What matters is
+      <strong>how big the difference is</strong>.
+    </p>
+    <p class="about-body">
+      So you're not looking for an app that matches the real rate. You're
+      looking for the one that stays closest to it. <strong>That gap is what
+      your transfer actually costs you</strong>, whether or not the app ever
+      calls it a fee.
+    </p>
+
+    <h2 class="about-h2">Why it's the only number worth comparing</h2>
+    <p class="about-body">
+      Every app says it has the best rate. Best compared to what? Without
+      something fixed to measure against, you can't check the claim.
+    </p>
+    <p class="about-body">
+      The real exchange rate is that fixed thing. It's the same for everyone,
+      and no app controls it. Once you measure each app against it, the ads
+      stop mattering and you're just comparing numbers.
+    </p>
+    <p class="about-body">
+      It also clears up the fee confusion. An app with <strong>no fee</strong>
+      can easily cost you more than an app that charges one &mdash; you just
+      can't tell by reading the two ads. Measured against the real rate, you
+      can. Here's exactly how.
+    </p>
+
+    <h2 class="about-h2">How to check any app in one minute</h2>
+    <p class="about-body">
+      The trick is to stop looking at the fee and the rate separately, and work
+      out <strong>how many pesos you get per dollar</strong> after everything
+      is taken out.
+    </p>
+    <ul class="about-list">
+      <li><strong>Look up the real rate</strong> &mdash; search &ldquo;USD to
+        PHP.&rdquo; Say it's 62.00 today.</li>
+      <li><strong>Check what your family actually receives</strong> in the app,
+        in pesos, for the amount you want to send.</li>
+      <li><strong>Divide those pesos by the dollars you're paying.</strong>
+        That's your real pesos-per-dollar.</li>
+      <li><strong>Compare it to the real rate.</strong> The difference,
+        multiplied by the dollars you sent, is what the app kept.</li>
+    </ul>
+    <p class="about-body">
+      Here's how that looks with made-up numbers, sending $500 on a day when
+      the real rate is 62.00.
+    </p>
+    <p class="about-body">
+      <strong>App A says &ldquo;no fee&rdquo;</strong> and offers 60.14. Your
+      family gets <strong>&#8369;30,070</strong>. Divide that by $500 and you
+      get 60.14 per dollar &mdash; 1.86 below the real rate. So the app kept
+      about <strong>&#8369;930</strong>. And it was telling the truth: there
+      really was no fee.
+    </p>
+    <p class="about-body">
+      <strong>App B charges a $5 fee</strong> but offers 61.80. Only $495 gets
+      converted, so your family gets <strong>&#8369;30,591</strong>. Divide
+      that by $500 and you get 61.18 per dollar &mdash; 0.82 below the real
+      rate. So App B kept about <strong>&#8369;409</strong>.
+    </p>
+    <p class="about-body">
+      <strong>The app with the fee sent &#8369;521 more.</strong> That's the
+      whole point. The fee was never the expensive part &mdash; the rate was.
+    </p>
+    <p class="about-body">
+      If you prefer percentages, divide the gap by the real rate: App A's 1.86
+      gap is a <strong>3% markup</strong>, and App B's 0.82 gap is about
+      <strong>1.3%</strong>. You don't need to do this for every app every
+      time. Doing it once, for the app you already use, is usually enough to
+      settle the question.
+    </p>
+
+    <h2 class="about-h2">Two things to know before you compare</h2>
+    <p class="about-body">
+      <strong>Different websites show slightly different numbers.</strong>
+      Google, your bank, and any comparison site each get their numbers from
+      their own supplier, and those update at different times. A difference of
+      a few centavos is normal and doesn't mean anyone is lying. Just use
+      <em>one</em> source for all the apps you're comparing, and check them
+      around the same time.
+    </p>
+    <p class="about-body">
+      <strong>The real rate changes during the day.</strong> It moves as the
+      market trades, so this morning's number won't exactly match tonight's.
+      For a normal transfer that movement is small next to the difference
+      between apps &mdash; <strong>which app you pick matters much more than
+      which hour you send</strong>.
+    </p>
+
+    <h2 class="about-h2">When an app's rate looks better than the real rate</h2>
+    <p class="about-body">
+      Sometimes you'll see an advertised rate that's <em>higher</em> than the
+      real one. That sounds like good news, which is exactly why it's worth a
+      second look. The real rate is what the dollar is genuinely worth, so an
+      app paying you more than that is paying you out of its own pocket
+      &mdash; and no business does that forever.
+    </p>
+    <p class="about-body">
+      A few centavos above is usually just the two numbers coming from
+      different suppliers. But a rate that's clearly higher is a promo: a
+      first-transfer offer, a limited-time deal, or one with conditions further
+      down the page. What happens next is covered in
+      <a href="why-your-rate-drops-after-first-transfer.html">why your rate
+      gets worse after the first send</a> &mdash; the promo wins your signup,
+      and the ordinary rate is the one you live with after that.
+    </p>
+
+    <h2 class="about-h2">How we use it here</h2>
+    <p class="about-body">
+      This is the backbone of the whole site. Every day TrueRate PH takes the
+      real exchange rate, measures every provider against it, and ranks them by
+      what your family actually receives in pesos after fees &mdash; the same
+      pesos-per-dollar math as above, done for you.
+    </p>
+    <p class="about-body">
+      When a provider's rate comes back above the real rate, we treat it as a
+      promo and take it out of the ranking, instead of letting it beat honest
+      everyday rates. We keep that check strict on purpose, so now and then a
+      provider drops out on a day its numbers run slightly ahead of ours. And
+      when we can't confirm a provider's ordinary rate, we say so rather than
+      guess.
+    </p>
+    <p class="about-body">
+      You can do all of this by hand with the steps above. Or you can let the
+      site do it for you.
+    </p>
+
+    <div class="about-cta">
+      <a class="btn-primary" href="../results.html">See today's real standard rates &rarr;</a>
+    </div>
+
+    <p class="disclaimer">
+      We may earn a commission if you sign up through a provider link &mdash;
+      it doesn't change the rates we show you.
+    </p>
+
+    <p class="footer-links"><a href="index.html">More articles</a> &nbsp;&middot;&nbsp; <a href="../about.html">Why we built TrueRate PH</a></p>
+
+  </div>
+
+  <!-- Privacy-friendly visitor analytics (GoatCounter) — no cookies, no personal data -->
+  <script data-goatcounter="https://truerateph.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

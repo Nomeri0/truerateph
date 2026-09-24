@@ -35,9 +35,14 @@ _A plain-language summary to resume the project in a fresh chat. Written for a n
 
 Nothing here is blocking — the site works fully as-is.
 
-### ▶ Next-time checklist (added 2026-09-18 — start here)
+### ▶ Next-time checklist (updated 2026-09-24 — START HERE, the user asked to be reminded of these)
 
-**The three follow-ups from the article #4 publish:**
+**⚠ Read these out to the user at the start of any TrueRatePH session — they explicitly asked on 2026-09-24 to be reminded next time they work on this project.**
+
+**Newly added 2026-09-24:**
+- [ ] **Bring articles #1 and #4 up to the new plain-language house style.** Agreed as a to-do when #3 was published — the user said the new style applies "from now on," so the two older articles were deliberately left alone, but they now read noticeably more jargon-y than #3 sitting next to them on the blog index. Concretely: [`blog/signs-app-is-hiding-its-real-rate.html`](blog/signs-app-is-hiding-its-real-rate.html) (#4) uses "mid-market rate" without ever explaining it in plain words, and calls the homepage figure "live" when it is refreshed daily; [`blog/why-your-rate-drops-after-first-transfer.html`](blog/why-your-rate-drops-after-first-transfer.html) (#1) says "un-marked-up rate" and "currency converter site" without explanation. Both now link to #3, so the fix can lean on it rather than re-explaining. Per [[writing-collaboration-style]] this is polish work, not a rewrite of the ideas.
+
+**The follow-ups from the article #4 publish:**
 - [ ] **Request indexing in Google Search Console** for `blog/signs-app-is-hiding-its-real-rate.html` **and `blog/what-is-the-mid-market-rate.html`** (user-only step; the sitemap will also pick both up on its own).
 - [x] **Article #3 published 2026-09-24** — committed and pushed; live at truerateph.com.
 - [ ] **NEW HOUSE STYLE for all future articles (set 2026-09-24):** after reviewing #3 the user said *"this is how the blogs should read from now on."* Plain English for a non-finance reader — no unexplained jargon (interbank, spot rate, effective rate, markup, benchmark), everyday analogies instead of abstract mechanisms (the money-changer *We Buy / We Sell* board), math worked out concretely in pesos rather than left as a formula, short sentences, and a section that directly answers the confusion a reader is likely to have. Apply to backlog articles #5-#10. **Do not retro-rewrite #1 and #4** — the user said "from now on" — though that is worth offering later, since #4 in particular still says "mid-market rate" without explaining it and calls the homepage figure "live" when it is refreshed daily.
